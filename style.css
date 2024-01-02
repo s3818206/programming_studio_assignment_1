@@ -1,0 +1,94 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Level 1 styles */
+.landing-page,
+.mission-statement {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-summary span {
+    font-weight: bold;
+}
+
+.mission-statement ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.mission-statement ul li {
+    margin-bottom: 8px;
+}
+
+.mission-statement h2 {
+    color: #3498db;
+}
+
+/* Level 2 styles */
+.level2 {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8; /* Orange background color for Level 2 */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.level2 h2 {
+    color: #e67e22; /* Dark orange text color for Level 2 heading */
+}
+
+.level2 h3 {
+    color: #e67e22; /* Dark orange text color for Level 2 sub-task headings */
+}
+
+.subtaskA,
+.subtaskB {
+    margin-bottom: 20px;
+}
+
+#subtaskA-results,
+#subtaskB-results {
+    margin-top: 10px;
+    /* Add additional styles for result display */
+}
+
+
+
+
+/* Level 3 styles */
+.level3 {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8; /*Red background color for Level 3*/
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.level3 h2 {
+    color: #c0392b; /* Dark red text color for Level 3 heading */
+}
+
+.level3 h3 {
+    color: #c0392b; /* Dark red text color for Level 3 sub-task headings */
+}
+
+.subtaskA,
+.subtaskB {
+    margin-bottom: 20px;
+}
+
+#subtaskA-results,
+#subtaskB-results {
+    margin-top: 10px;
+    /* Add additional styles for result display */
+}
