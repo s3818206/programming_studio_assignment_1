@@ -6,18 +6,22 @@ body {
 
 /* Header styles */
 header {
-    background-color: #8B4513; /* Brown color */
-    padding: 5px 15px;
+    background-color: #8B4513; 
+    padding: 5px;
     display: flex;
     justify-content: space-around ;
     align-items: center;
 }
 
 .logo {
-    color: #fff; /* Logo text color */
+    color: #fff; 
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: bold;
+}
+
+.logo > h2 {
+    margin: 0; 
 }
 
 /* Navbar styles */
@@ -26,7 +30,7 @@ header {
 }
 
 .navbar a {
-    color: #fff; /* Navbar link text color */
+    color: #fff; 
     text-decoration: none;
     padding: 14px 16px;
     display: inline-block;
@@ -34,7 +38,7 @@ header {
 }
 
 .navbar a:hover {
-    color: #e74c3c; /* Hover color for navbar links */
+    color: #e74c3c; 
 }
 
 /* Search styles */
@@ -87,17 +91,17 @@ header {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f8f8f8; /* Orange background color for Level 2 */
+    background-color: #f8f8f8; 
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .level2 h2 {
-    color: #e67e22; /* Dark orange text color for Level 2 heading */
+    color: #e67e22; 
 }
 
 .level2 h3 {
-    color: #e67e22; /* Dark orange text color for Level 2 sub-task headings */
+    color: #e67e22; 
 }
 
 .subtaskA,
@@ -108,7 +112,7 @@ header {
 #subtaskA-results,
 #subtaskB-results {
     margin-top: 10px;
-    /* Add additional styles for result display */
+    
 }
 
 
@@ -119,17 +123,17 @@ header {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f8f8f8; /*Red background color for Level 3*/
+    background-color: #f8f8f8; 
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .level3 h2 {
-    color: #c0392b; /* Dark red text color for Level 3 heading */
+    color: #c0392b; 
 }
 
 .level3 h3 {
-    color: #c0392b; /* Dark red text color for Level 3 sub-task headings */
+    color: #c0392b; 
 }
 
 .subtaskA,
@@ -140,5 +144,5 @@ header {
 #subtaskA-results,
 #subtaskB-results {
     margin-top: 10px;
-    /* Add additional styles for result display */
+    
 }
