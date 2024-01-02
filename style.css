@@ -4,6 +4,56 @@ body {
     padding: 0;
 }
 
+/* Header styles */
+header {
+    background-color: #8B4513; /* Brown color */
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-around ;
+    align-items: center;
+}
+
+.logo {
+    color: #fff; /* Logo text color */
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    color: #fff; /* Navbar link text color */
+    text-decoration: none;
+    padding: 14px 16px;
+    display: inline-block;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #e74c3c; /* Hover color for navbar links */
+}
+
+/* Search styles */
+#search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#search-icon {
+    color: #fff;
+    margin-right: 5px;
+}
+
 /* Level 1 styles */
 .landing-page,
 .mission-statement {
