@@ -60,7 +60,7 @@ header {
 
 /* Level 1 styles */
 .landing-page,
-.mission-statement {
+.level1 {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -73,18 +73,28 @@ header {
     font-weight: bold;
 }
 
-.mission-statement ul {
+.level1 ul {
     list-style-type: none;
     padding: 0;
 }
 
-.mission-statement ul li {
+.level1 ul li {
     margin-bottom: 8px;
 }
 
-.mission-statement h2 {
+.level1 h2 {
     color: #3498db;
 }
+
+.level1 p {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.level1 ul, .level1 ol {
+    margin-left: 20px;
+}
+
 
 /* Level 2 styles */
 .level2 {
@@ -104,17 +114,41 @@ header {
     color: #e67e22; 
 }
 
-.subtaskA,
-.subtaskB {
+.level2 .subtaskA,
+.level2 .subtaskB {
     margin-bottom: 20px;
 }
 
-#subtaskA-results,
-#subtaskB-results {
-    margin-top: 10px;
-    
+.level2 form {
+    margin-bottom: 15px;
 }
 
+.level2 label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.level2 input, .level2 select {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.level2 button {
+    padding: 8px;
+    background-color: #8B4513; /* Brown color */
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+}
+
+.level2 button:hover {
+    background-color: #A0522D; /* Darker brown color on hover */
+}
+
+.level2 #subtaskA-results,
+.level2 #subtaskB-results {
+    margin-top: 10px;
+}
 
 
 
@@ -123,26 +157,63 @@ header {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f8f8f8; 
+    background-color: #f8f8f8; /* White background */
+    color: #000; /* Black text */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .level3 h2 {
-    color: #c0392b; 
+    color: #000; /* Black text */
 }
 
 .level3 h3 {
-    color: #c0392b; 
+    color: #000; /* Red text */
 }
 
 .subtaskA,
 .subtaskB {
     margin-bottom: 20px;
+    background-color: #ecf0f1; /* Light gray background */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.subtaskA label,
+.subtaskB label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.subtaskA input,
+.subtaskB input,
+.subtaskA select,
+.subtaskB select,
+.subtaskA button,
+.subtaskB button {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.subtaskA button,
+.subtaskB button {
+    background-color: #3498db; /* Blue button color */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.subtaskA button:hover,
+.subtaskB button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
 }
 
 #subtaskA-results,
 #subtaskB-results {
     margin-top: 10px;
-    
 }
+
