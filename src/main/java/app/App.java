@@ -1,4 +1,4 @@
-package backend.src.main.java;
+package src.main.java.app;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;

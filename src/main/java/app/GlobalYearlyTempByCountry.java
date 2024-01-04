@@ -1,12 +1,10 @@
-package backend.src.main.java;
+package src.main.java.app;
 
-public class GlobalYearlyTempByState {
+public class GlobalYearlyTempByCountry {
     private int id;
     private int year;
     private double averageTemp; 
     private double minTemp;
     private double maxTemp;
     private String country; 
-    private String state; 
-
 }

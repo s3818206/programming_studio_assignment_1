@@ -8,6 +8,20 @@
             "type": "java",
             "name": "App",
             "request": "launch",
+            "mainClass": "src.main.java.app.App",
+            "projectName": "programming_milestone_1_7a4ead50"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "week04"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
             "mainClass": "backend.src.main.java.App",
             "projectName": "programming_milestone_1_7a4ead50"
         },

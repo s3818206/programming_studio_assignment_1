@@ -1,4 +1,4 @@
-package backend.src.main.java;
+package src.main.java.app;
 
 public class GlobalYearlyTemp {
     private int id;

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean and Land Temperature Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <a class="logo" href="index.html"><h2>Climate Insigns</h2></a>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="news.html">News</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <!-- Search -->
+        <div id="search-container">
+            <div id="search-container">
+                <i id="search-icon" class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search...">
+            </div>
+        </div>
+    </header>
+
+    <!-- Level 1: Landing Page -->
+    <section class="landing-page">
+        <h1>Welcome to Ocean and Land Temperature Analysis</h1>
+        <p>Explore temperature patterns over a 260-year period from 1750 - 2013</p>
+
+        <!-- TODO: Display dynamic information from the database -->
+        <div class="data-summary">
+            <p>Year Range: <span id="year-range">1750 - 2013</span></p>
+            <p>World Population: <span id="world-population"></span></p>
+            <p>World Temperature: <span id="world-temperature"></span></p>
+            <p>Total Years of Data: <span id="total-years"></span></p>
+        </div>
+    </section>
+
+    <!-- Level 1: Mission Statement -->
+    <section class="level1">
+        <h2>Mission Statement</h2>
+        <p>We aim to provide a comprehensive analysis of ocean and land temperatures, aiding governments, scientists, and the public in understanding climate change patterns.</p>
+
+        <!-- TODO: Display dynamic information from the database -->
+        <p>Our site can be used to:</p>
+        <ul>
+            <li>Explore high-level concepts of temperature changes</li>
+            <li>Conduct in-depth analysis of temperature data</li>
+        </ul>
+
+        <p>Personas Targeted:</p>
+        <ul>
+            <li>Government Officials</li>
+            <li>Scientists and Researchers</li>
+            <li>General Public</li>
+        </ul>
+
+        <!-- TODO: Display team members' information from the database -->
+        <p>Team Members (NEED to update to take from the database):</p>
+        <ul id="team-members">
+            <li>Pham Hoang Duong - s3818206</li>
+            <li>Duong Khoi Nguyen - s4000770</li>
+            <li>Phan Huu Phuoc - s4035378</li>
+            <li>Tran Viet Anh - s4071165</li>
+            <li>Nguyen Nhat Anh - s4029795</li>
+        </ul>
+    </section>
+
+    <!-- Level 2: Shallow Glance of the Data -->
+    <section class="level2">
+        <h2>Shallow Glance of the Data</h2>
+
+        <!-- Sub-Task A: Focused view of temperature and population change by Country/Global -->
+        <div class="subtaskA">
+            <h3>Focused view of temperature and population change by Country/Global</h3>
+            <form id="subtaskA-form">
+                <label for="view-type">View by:</label>
+                <select id="view-type" name="view-type">
+                    <option value="countries">Countries</option>
+                    <option value="world">World</option>
+                </select>
+
+                <label for="start-year">Start Year:</label>
+                <input type="number" id="start-year" name="start-year" min="1750" max="2013">
+
+                <label for="end-year">End Year:</label>
+                <input type="number" id="end-year" name="end-year" min="1750" max="2013">
+
+                <label for="sort-by">Sort by:</label>
+                <select id="sort-by" name="sort-by">
+                    <option value="temperature">Temperature</option>
+                    <option value="population">Population</option>
+                </select>
+
+                <label for="sort-order">Sort order:</label>
+                <select id="sort-order" name="sort-order">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+
+                <button type="button" onclick="fetchSubtaskAData()">Submit</button>
+            </form>
+
+            <div id="subtaskA-results">
+                <!-- Display dynamic data based on user input -->
+            </div>
+        </div>
+
+        <!-- Sub-Task B: Focused view of temperature change by City/State -->
+        <div class="subtaskB">
+            <h3>Focused view of temperature change by City/State</h3>
+            <form id="subtaskB-form">
+                <label for="country">Choose a Country:</label>
+                <select id="country" name="country">
+                    <!-- Populate this dropdown dynamically from the database using JavaScript -->
+                </select>
+
+                <label for="start-year-b">Start Year:</label>
+                <input type="number" id="start-year-b" name="start-year-b" min="1750" max="2013">
+
+                <label for="end-year-b">End Year:</label>
+                <input type="number" id="end-year-b" name="end-year-b" min="1750" max="2013">
+
+                <label for="view-type-b">View by:</label>
+                <select id="view-type-b" name="view-type-b">
+                    <option value="cities">Cities</option>
+                    <option value="states">States</option>
+                </select>
+
+                <button type="button" onclick="fetchSubtaskBData()">Submit</button>
+            </form>
+
+            <div id="subtaskB-results">
+                <!-- Display dynamic data based on user input -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Level 3: Deep-dive of the Data -->
+    <section class="level3">
+        <h2>Deep-dive of the Data</h2>
+
+        <!-- Sub-Task A: Identify changes in temperature over extended periods -->
+        <div class="subtaskA">
+            <h3>Identify changes in temperature over extended periods</h3>
+            <!-- Add form elements for user input, buttons, and dynamic data display -->
+            <form id="subtaskA-form">
+                <!-- User input elements (e.g., dropdowns, input fields) -->
+                <label for="startYearA">Starting Year:</label>
+                <input type="text" id="startYearA" name="startYearA">
+                
+                <label for="timePeriodA">Time Period (years):</label>
+                <input type="text" id="timePeriodA" name="timePeriodA">
+                
+                <label for="regionA">Geographic Region:</label>
+                <select id="regionA" name="regionA">
+                    <!-- Add options dynamically based on your data -->
+                </select>
+                
+                <!-- Add more input elements as needed -->
+                
+                <button type="button" onclick="submitFormA()">Submit</button>
+            </form>
+            <div id="subtaskA-results">
+                <!-- Display dynamic data based on user input -->
+            </div>
+        </div>
+
+        <!-- Sub-Task B: Finding time periods with similar temperature and/or population -->
+        <div class="subtaskB">
+            <h3>Finding time periods with similar temperature and/or population</h3>
+            <!-- Add form elements for user input, buttons, and dynamic data display -->
+            <form id="subtaskB-form">
+                <!-- User input elements (e.g., dropdowns, input fields) -->
+                <label for="startYearB">Starting Year:</label>
+                <input type="text" id="startYearB" name="startYearB">
+                
+                <label for="timePeriodB">Time Period (years):</label>
+                <input type="text" id="timePeriodB" name="timePeriodB">
+                
+                <label for="regionB">Geographic Region:</label>
+                <select id="regionB" name="regionB">
+                    <!-- Add options dynamically based on your data -->
+                </select>
+                
+                
+                
+                <button type="button" onclick="submitFormB()">Submit</button>
+            </form>
+            <div id="subtaskB-results">
+                <!-- Display dynamic data based on user input -->
+            </div>
+        </div>
+    </section>
+
+    <script src="index.js"></script> 
+</body>
+
+</html>
