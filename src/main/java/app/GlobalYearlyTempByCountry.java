@@ -1,4 +1,4 @@
-package src.main.java.app;
+package app;
 
 public class GlobalYearlyTempByCountry {
     private int id;

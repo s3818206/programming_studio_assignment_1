@@ -1,4 +1,4 @@
-package src.main.java.app;
+package app;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ public class App {
         JDBCConnection jdbc = new JDBCConnection();
         ArrayList<Member> members = jdbc.getMembers();
         for (Member member : members) {
-            System.out.println("\t" + member.getName() + ":" + member.getStudentId());
+            System.out.println("\t" + member.getName() + ": " + member.getStudentId());
         }
     }
 }
