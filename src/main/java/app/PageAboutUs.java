@@ -12,7 +12,12 @@ public class PageAboutUs implements Handler  {
     @Override
     public void handle(Context context) throws Exception {
         Map<String, Object> model = new HashMap<String, Object>();
-        JDBCConnection jdbc = new JDBCConnection();
+
+        // JDBCConnection jdbc = new JDBCConnection();
+        // ArrayList<Member> members = jdbc.getMembers();
+        // for (Member member : members) {
+        //     System.out.println("\t" + member.getName() + ": " + member.getStudentId());
+        // }
         
     
         // TODO: Your work for Thymeleaf and JDBC

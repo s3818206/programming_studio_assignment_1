@@ -9,6 +9,13 @@
             "name": "App",
             "request": "launch",
             "mainClass": "app.App",
+            "projectName": "group04"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "app.App",
             "projectName": "week04"
         },
         {
