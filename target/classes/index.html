@@ -1,105 +1,904 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Climate Change Awareness</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body class="vw-100 vh-100">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid d-flex flex-row justify-content-between align-items-center">
-            <a class="navbar-brand ms-5 fs-3" href="/">Climate Insight</a>
-            <ul class="navbar-nav mb-lg-0">
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/about-us">About Us</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/news">News</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/contact">Contact</a>
-                </li>
-            </ul> 
-            <!-- TODO: Seaching functionality may change based GET and POST  requests -->
-            <form class="d-flex me-5" role="search">
-                <input class="form-control me-2 fs-5" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success fs-5" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>    
-
-    <main>
-        <div id="myCarousel" class="carousel slide mb-6 w-100 h-100" data-bs-ride="carousel">
-            <div class="carousel-indicators">   
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<html
+    lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Climate Change Awareness</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous" />
+        <link
+            type="text/css"
+            href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body class="vw-100 vh-100">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div
+                class="container-fluid d-flex flex-row justify-content-between align-items-center">
+                <a class="navbar-brand ms-5 fs-3" href="/">Climate Insight</a>
+                <ul class="navbar-nav mb-lg-0">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link fs-5" href="/about-us">About Us</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link fs-5" href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link fs-5" href="/news">News</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link fs-5" href="/contact">Contact</a>
+                    </li>
+                </ul>
+                <!-- TODO: Seaching functionality may change based GET and POST  requests -->
+                <form class="d-flex me-5" role="search">
+                    <input
+                        class="form-control me-2 fs-5"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search" />
+                    <button class="btn btn-outline-success fs-5" type="submit">
+                        Search
+                    </button>
+                </form>
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="bd-placeholder-img" width="100%" height="100%" src="https://images.inc.com/uploaded_files/image/1920x1080/getty_517129164_279516.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"/>
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Welcome to Climate Change Awareness</h1>
-                            <p>Explore temperature and population patterns from <b>1750 - 2013</b></p>
-                            <p><a class="btn btn-lg btn-primary" href="#">About Us</a></p>
+        </nav>
+        <main>
+            <div
+                id="myCarousel"
+                class="carousel slide mb-6 w-100 h-100"
+                data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button
+                        type="button"
+                        data-bs-target="#myCarousel"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="Slide 1"></button>
+                    <button
+                        type="button"
+                        data-bs-target="#myCarousel"
+                        data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button
+                        type="button"
+                        data-bs-target="#myCarousel"
+                        data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img
+                            class="bd-placeholder-img carousel-image"
+                            width="100%"
+                            height="100%"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false" />
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Welcome to Climate Change Awareness</h1>
+                                <p>
+                                    Explore temperature and population patterns
+                                    from
+                                    <b>1750 - 2013</b>
+                                </p>
+                                <p>
+                                    <a class="btn btn-lg btn-primary" href="#">
+                                        About Us
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <svg
+                            class="bd-placeholder-img"
+                            width="100%"
+                            height="100%"
+                            aria-hidden="true"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false">
+                            <rect
+                                width="100%"
+                                height="100%"
+                                fill="var(--bs-secondary-color)" />
+                        </svg>
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Another example headline.</h1>
+                                <p>
+                                    Some representative placeholder content for
+                                    the second slide of the carousel.
+                                </p>
+                                <p>
+                                    <a class="btn btn-lg btn-primary" href="#">
+                                        Learn more
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <svg
+                            class="bd-placeholder-img"
+                            width="100%"
+                            height="100%"
+                            aria-hidden="true"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false">
+                            <rect
+                                width="100%"
+                                height="100%"
+                                fill="var(--bs-secondary-color)" />
+                        </svg>
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Another example headline.</h1>
+                                <p>
+                                    Some representative placeholder content for
+                                    the second slide of the carousel.
+                                </p>
+                                <p>
+                                    <a class="btn btn-lg btn-primary" href="#">
+                                        Learn more
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Another example headline.</h1>
-                            <p>Some representative placeholder content for the second slide of the carousel.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Another example headline.</h1>
-                            <p>Some representative placeholder content for the second slide of the carousel.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#myCarousel"
+                    data-bs-slide="prev">
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#myCarousel"
+                    data-bs-slide="next">
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div>
+                <!-- TODO: Display World Population and World Temperature here -->
+                <div class="container mt-md-n6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-group">
+                                <div class="card border-left-md border-soft">
+                                    <div class="card-body text-center">
+                                        <h6 class="font-weight-bold mb-2">
+                                            Global Temperature
+                                        </h6>
+                                        <h2 class="text-gray mb-0">
+                                            <span
+                                                class="counter display-3 mr-2">
+                                                1.9
+                                            </span>
+                                            F
+                                        </h2>
+                                        <span
+                                            class="text-center text-muted mb-0">
+                                            since 1880
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card border-left-md border-soft">
+                                    <div class="card-body text-center">
+                                        <h6 class="font-weight-bold mb-2">
+                                            World population
+                                        </h6>
+                                        <h2 class="text-gray mb-0">
+                                            <span class="icon-danger mr-2">
+                                                <i
+                                                    class="fas fa-long-arrow-alt-down"></i>
+                                            </span>
+                                            <span
+                                                class="counter display-3 mr-2">
+                                                13
+                                            </span>
+                                        </h2>
+                                        <span
+                                            class="text-center text-muted mb-0">
+                                            percent per decade
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <div>
-            <!-- TODO: Display World Population and World Temperature here -->
-        </div>
-        <div>
-            <!-- TODO: First appearance of Dashboard displayed here -->
-        </div>
-        <div>
-            <!-- TODO: First appearance for News displayed here-->
-        </div>
-    </main>
+            <hr class="featurette-divider" />
+            <div>
+                <h1 class="w-100 text-center">
+                    Climate and Population Dashboard
+                </h1>
+                <p class="w-100 text-center">
+                    Tracking climate change and population over time
+                </p>
+                <!-- TODO: First appearance of Dashboard displayed here -->
 
-    <footer>
-        
-    </footer>
+                <div class="container">
+                    <div
+                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Dashboard</h1>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="btn-group me-2">
+                                <button
+                                    type="button"
+                                    class="btn btn-sm btn-outline-secondary">
+                                    Share
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-sm btn-outline-secondary">
+                                    Export
+                                </button>
+                            </div>
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
+                                <svg class="bi">
+                                    <use xlink:href="#calendar3" />
+                                </svg>
+                                This week
+                            </button>
+                        </div>
+                    </div>
 
-    <!-- Level 1: Landing Page -->
-    <!-- TODO: Display dynamic information from the database -->
-    <!--<section class="landing-page">
+                    <canvas
+                        class="my-4 w-100"
+                        id="myChart"
+                        width="900"
+                        height="380"></canvas>
+
+                    <h2>Section title</h2>
+                    <div class="table-responsive small">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Header</th>
+                                    <th scope="col">Header</th>
+                                    <th scope="col">Header</th>
+                                    <th scope="col">Header</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1,001</td>
+                                    <td>random</td>
+                                    <td>data</td>
+                                    <td>placeholder</td>
+                                    <td>text</td>
+                                </tr>
+                                <tr>
+                                    <td>1,002</td>
+                                    <td>placeholder</td>
+                                    <td>irrelevant</td>
+                                    <td>visual</td>
+                                    <td>layout</td>
+                                </tr>
+                                <tr>
+                                    <td>1,003</td>
+                                    <td>data</td>
+                                    <td>rich</td>
+                                    <td>dashboard</td>
+                                    <td>tabular</td>
+                                </tr>
+                                <tr>
+                                    <td>1,003</td>
+                                    <td>information</td>
+                                    <td>placeholder</td>
+                                    <td>illustrative</td>
+                                    <td>data</td>
+                                </tr>
+                                <tr>
+                                    <td>1,004</td>
+                                    <td>text</td>
+                                    <td>random</td>
+                                    <td>layout</td>
+                                    <td>dashboard</td>
+                                </tr>
+                                <tr>
+                                    <td>1,005</td>
+                                    <td>dashboard</td>
+                                    <td>irrelevant</td>
+                                    <td>text</td>
+                                    <td>placeholder</td>
+                                </tr>
+                                <tr>
+                                    <td>1,006</td>
+                                    <td>dashboard</td>
+                                    <td>illustrative</td>
+                                    <td>rich</td>
+                                    <td>data</td>
+                                </tr>
+                                <tr>
+                                    <td>1,007</td>
+                                    <td>placeholder</td>
+                                    <td>tabular</td>
+                                    <td>information</td>
+                                    <td>irrelevant</td>
+                                </tr>
+                                <tr>
+                                    <td>1,008</td>
+                                    <td>random</td>
+                                    <td>data</td>
+                                    <td>placeholder</td>
+                                    <td>text</td>
+                                </tr>
+                                <tr>
+                                    <td>1,009</td>
+                                    <td>placeholder</td>
+                                    <td>irrelevant</td>
+                                    <td>visual</td>
+                                    <td>layout</td>
+                                </tr>
+                                <tr>
+                                    <td>1,010</td>
+                                    <td>data</td>
+                                    <td>rich</td>
+                                    <td>dashboard</td>
+                                    <td>tabular</td>
+                                </tr>
+                                <tr>
+                                    <td>1,011</td>
+                                    <td>information</td>
+                                    <td>placeholder</td>
+                                    <td>illustrative</td>
+                                    <td>data</td>
+                                </tr>
+                                <tr>
+                                    <td>1,012</td>
+                                    <td>text</td>
+                                    <td>placeholder</td>
+                                    <td>layout</td>
+                                    <td>dashboard</td>
+                                </tr>
+                                <tr>
+                                    <td>1,013</td>
+                                    <td>dashboard</td>
+                                    <td>irrelevant</td>
+                                    <td>text</td>
+                                    <td>visual</td>
+                                </tr>
+                                <tr>
+                                    <td>1,014</td>
+                                    <td>dashboard</td>
+                                    <td>illustrative</td>
+                                    <td>rich</td>
+                                    <td>data</td>
+                                </tr>
+                                <tr>
+                                    <td>1,015</td>
+                                    <td>random</td>
+                                    <td>tabular</td>
+                                    <td>information</td>
+                                    <td>text</td>
+                                </tr>
+                            </tbody>
+                        </table>    
+                    </div>
+                </div>
+            </div>
+            <hr class="featurette-divider" />
+            <div class="container">
+                <!-- TODO: First appearance for News displayed here-->
+                <h1 class="w-100 text-center">Claim news here</h1>
+                <p class="w-100 text-center">
+                    Get the latest new about population
+                </p>
+                <div class="row mb-2 mt-5">
+                    <div class="col-md-4">
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-primary-emphasis">
+                                    World
+                                </strong>
+                                <h3 class="mb-0">Featured post</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 12
+                                </div>
+                                <p class="card-text mb-auto">Text</p>
+                                <a
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c" />
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-success-emphasis">
+                                    Design
+                                </strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 11
+                                </div>
+                                <p class="mb-auto">Description</p>
+                                <a
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c" />
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-success-emphasis">
+                                    Design
+                                </strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 11
+                                </div>
+                                <p class="mb-auto">Description</p>
+                                <a
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c" />
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-8">
+                        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                            From the Firehose
+                        </h3>
+
+                        <article class="blog-post">
+                            <h2 class="display-5 link-body-emphasis mb-1">
+                                Sample blog post
+                            </h2>
+                            <p class="blog-post-meta">
+                                January 1, 2021 by
+                                <a href="#">Mark</a>
+                            </p>
+
+                            <p>
+                                This blog post shows a few different types of
+                                content that’s supported and styled with
+                                Bootstrap. Basic typography, lists, tables,
+                                images, code, and more are all supported as
+                                expected.
+                            </p>
+                            <hr />
+                            <p>
+                                This is some additional paragraph placeholder
+                                content. It has been written to fill the
+                                available space and show how a longer snippet of
+                                text affects the surrounding content. We'll
+                                repeat it often to keep the demonstration
+                                flowing, so be on the lookout for this exact
+                                same string of text.
+                            </p>
+                            <h2>Blockquotes</h2>
+                            <p>This is an example blockquote in action:</p>
+                            <blockquote class="blockquote">
+                                <p>Quoted text goes here.</p>
+                            </blockquote>
+                            <p>
+                                This is some additional paragraph placeholder
+                                content. It has been written to fill the
+                                available space and show how a longer snippet of
+                                text affects the surrounding content. We'll
+                                repeat it often to keep the demonstration
+                                flowing, so be on the lookout for this exact
+                                same string of text.
+                            </p>
+                            <h3>Example lists</h3>
+                            <p>
+                                This is some additional paragraph placeholder
+                                content. It's a slightly shorter version of the
+                                other highly repetitive body text used
+                                throughout. This is an example unordered list:
+                            </p>
+                            <ul>
+                                <li>First list item</li>
+                                <li>
+                                    Second list item with a longer description
+                                </li>
+                                <li>Third list item to close it out</li>
+                            </ul>
+                            <p>And this is an ordered list:</p>
+                            <ol>
+                                <li>First list item</li>
+                                <li>
+                                    Second list item with a longer description
+                                </li>
+                                <li>Third list item to close it out</li>
+                            </ol>
+                            <p>And this is a definition list:</p>
+                            <dl>
+                                <dt>HyperText Markup Language (HTML)</dt>
+                                <dd>
+                                    The language used to describe and define the
+                                    content of a Web page
+                                </dd>
+                                <dt>Cascading Style Sheets (CSS)</dt>
+                                <dd>
+                                    Used to describe the appearance of Web
+                                    content
+                                </dd>
+                                <dt>JavaScript (JS)</dt>
+                                <dd>
+                                    The programming language used to build
+                                    advanced Web sites and applications
+                                </dd>
+                            </dl>
+                            <h2>Inline HTML elements</h2>
+                            <p>
+                                HTML defines a long list of available inline
+                                tags, a complete list of which can be found on
+                                the
+                                <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">
+                                    Mozilla Developer Network
+                                </a>
+                                .
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>To bold text</strong>
+                                    , use
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        &lt;strong&gt;
+                                    </code>
+                                    .
+                                </li>
+                                <li>
+                                    <em>To italicize text</em>
+                                    , use
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        &lt;em&gt;
+                                    </code>
+                                    .
+                                </li>
+                                <li>
+                                    Abbreviations, like
+                                    <abbr title="HyperText Markup Language">
+                                        HTML
+                                    </abbr>
+                                    should use
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        &lt;abbr&gt;
+                                    </code>
+                                    , with an optional
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        title
+                                    </code>
+                                    attribute for the full phrase.
+                                </li>
+                                <li>
+                                    Citations, like
+                                    <cite>— Mark Otto</cite>
+                                    , should use
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        &lt;cite&gt;
+                                    </code>
+                                    .
+                                </li>
+                                <li>
+                                    <del>Deleted</del>
+                                    text should use
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        &lt;del&gt;
+                                    </code>
+                                    and
+                                    <ins>inserted</ins>
+                                    text should use
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        &lt;ins&gt;
+                                    </code>
+                                    .
+                                </li>
+                                <li>
+                                    Superscript
+                                    <sup>text</sup>
+                                    uses
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        &lt;sup&gt;
+                                    </code>
+                                    and subscript
+                                    <sub>text</sub>
+                                    uses
+                                    <code
+                                        class="language-plaintext highlighter-rouge">
+                                        &lt;sub&gt;
+                                    </code>
+                                    .
+                                </li>
+                            </ul>
+                            <p>
+                                Most of these elements are styled by browsers
+                                with few modifications on our part.
+                            </p>
+                            <h2>Heading</h2>
+                            <p>
+                                This is some additional paragraph placeholder
+                                content. It has been written to fill the
+                                available space and show how a longer snippet of
+                                text affects the surrounding content. We'll
+                                repeat it often to keep the demonstration
+                                flowing, so be on the lookout for this exact
+                                same string of text.
+                            </p>
+                            <h3>Sub-heading</h3>
+                            <p>
+                                This is some additional paragraph placeholder
+                                content. It has been written to fill the
+                                available space and show how a longer snippet of
+                                text affects the surrounding content. We'll
+                                repeat it often to keep the demonstration
+                                flowing, so be on the lookout for this exact
+                                same string of text.
+                            </p>
+                            <pre><code>Example code block</code></pre>
+                            <p>
+                                This is some additional paragraph placeholder
+                                content. It's a slightly shorter version of the
+                                other highly repetitive body text used
+                                throughout.
+                            </p>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="position-sticky" style="top: 2rem">
+                            <div class="p-4 mb-3 bg-body-tertiary rounded">
+                                <h4 class="fst-italic">About</h4>
+                                <p class="mb-0">
+                                    Customize this section to tell your visitors
+                                    a little bit about your publication,
+                                    writers, content, or something else
+                                    entirely. Totally up to you.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h4 class="fst-italic">Recent posts</h4>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a
+                                            class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                                            href="#">
+                                            <svg
+                                                class="bd-placeholder-img"
+                                                width="100%"
+                                                height="96"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                aria-hidden="true"
+                                                preserveAspectRatio="xMidYMid slice"
+                                                focusable="false">
+                                                <rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#777" />
+                                            </svg>
+                                            <div class="col-lg-8">
+                                                <h6 class="mb-0">
+                                                    Example blog post title
+                                                </h6>
+                                                <small
+                                                    class="text-body-secondary">
+                                                    January 15, 2023
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                                            href="#">
+                                            <svg
+                                                class="bd-placeholder-img"
+                                                width="100%"
+                                                height="96"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                aria-hidden="true"
+                                                preserveAspectRatio="xMidYMid slice"
+                                                focusable="false">
+                                                <rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#777" />
+                                            </svg>
+                                            <div class="col-lg-8">
+                                                <h6 class="mb-0">
+                                                    This is another blog post
+                                                    title
+                                                </h6>
+                                                <small
+                                                    class="text-body-secondary">
+                                                    January 14, 2023
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                                            href="#">
+                                            <svg
+                                                class="bd-placeholder-img"
+                                                width="100%"
+                                                height="96"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                aria-hidden="true"
+                                                preserveAspectRatio="xMidYMid slice"
+                                                focusable="false">
+                                                <rect
+                                                    width="100%"
+                                                    height="100%"
+                                                    fill="#777" />
+                                            </svg>
+                                            <div class="col-lg-8">
+                                                <h6 class="mb-0">
+                                                    Longer blog post title: This
+                                                    one has multiple lines!
+                                                </h6>
+                                                <small
+                                                    class="text-body-secondary">
+                                                    January 13, 2023
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4">
+                                <h4 class="fst-italic">Archives</h4>
+                                <ol class="list-unstyled mb-0">
+                                    <li><a href="#">March 2021</a></li>
+                                    <li><a href="#">February 2021</a></li>
+                                    <li><a href="#">January 2021</a></li>
+                                    <li><a href="#">December 2020</a></li>
+                                    <li><a href="#">November 2020</a></li>
+                                    <li><a href="#">October 2020</a></li>
+                                    <li><a href="#">September 2020</a></li>
+                                    <li><a href="#">August 2020</a></li>
+                                    <li><a href="#">July 2020</a></li>
+                                    <li><a href="#">June 2020</a></li>
+                                    <li><a href="#">May 2020</a></li>
+                                    <li><a href="#">April 2020</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer></footer>
+        <!-- Level 1: Landing Page -->
+        <!-- TODO: Display dynamic information from the database -->
+        <!--<section class="landing-page">
         <h1>Welcome to Ocean and Land Temperature Analysis</h1>
         <p>Explore temperature patterns over a 260-year period from 1750 - 2013</p>
         <div class="data-summary">
@@ -110,11 +909,11 @@
         </div>
     </section>-->
 
-    <!-- Level 1: Big Picture content-->
-    <!-- TODO: Display dynamic information from the database -->
-    <!-- TODO: Display team members' information from the database -->
+        <!-- Level 1: Big Picture content-->
+        <!-- TODO: Display dynamic information from the database -->
+        <!-- TODO: Display team members' information from the database -->
 
-    <!-- <section class="level1">
+        <!-- <section class="level1">
         <h2>Big Picture content</h2>
         <p>We aim to provide a comprehensive analysis of ocean and land temperatures, aiding governments, scientists, and the public in understanding climate change patterns.</p>
 
@@ -141,8 +940,8 @@
             </ul>
     </section> -->
 
-    <!-- Level 2: Shallow Glance of the Data -->
-    <!-- <section class="level2">
+        <!-- Level 2: Shallow Glance of the Data -->
+        <!-- <section class="level2">
         <h2>Shallow Glance of the Data</h2>
         <div class="subtaskA">
             <h3>Focused view of temperature and population change by Country/Global</h3>
@@ -205,8 +1004,8 @@
         </div>
     </section> -->
 
-    <!-- Level 3: Deep-dive of the Data -->
-    <!-- <section class="level3">
+        <!-- Level 3: Deep-dive of the Data -->
+        <!-- <section class="level3">
         <h2>Deep-dive of the Data</h2>
 
         <div class="subtaskA">
@@ -246,9 +1045,11 @@
         </div>
     </section> -->
 
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script src="index.js"></script>
+    </body>
 </html>

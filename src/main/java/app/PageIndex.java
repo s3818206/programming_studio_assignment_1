@@ -19,10 +19,8 @@ public class PageIndex implements Handler  {
         // TODO: Your work for Thymeleaf and JDBC
 
         
-    
 
         // No code below this
-
         context.render(TEMPLATE, model);
     }
 }

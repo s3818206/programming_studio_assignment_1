@@ -7,7 +7,7 @@
     <title>Climate Change Awareness</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -37,34 +37,42 @@
     <!-- TODO: Work on the body of this page -->
     <main>
         <h1 class="w-100 text-center my-4">Group 04 - Team Member</h1>
-        <div class="container marketing">
-            <div class="row">
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-                    <h2 class="fw-normal">Phan Huu Phuoc</h2>
+        <div>
+            <div class="container marketing">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==3}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 3}" th:text="${member.getStudentId()}"></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==1}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 1}" th:text="${member.getStudentId()}"></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"  role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==2}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 2}" th:text="${member.getStudentId()}"></p>
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-                    <h2 class="fw-normal">Pham Hoang Duong</h2>
-                </div>
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"  role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-                    <h2 class="fw-normal">Duong Khoi Nguyen</h2>
+            </div>
+            <div class="container marketing mt-5">
+                <div class="w-100 d-flex flex-row justify-content-evenly">
+                    <div class="d-flex flex-column align-items-center">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==4}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 4}" th:text="${member.getStudentId()}"></p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==5}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 5}" th:text="${member.getStudentId()}"></p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container marketing mt-5">
-            <div class="w-100 d-flex flex-row justify-content-evenly">
-                <div class="d-flex flex-column align-items-center">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-                    <h2 class="fw-normal">Tran Viet Anh</h2>
-                </div>
-                <div class="d-flex flex-column align-items-center">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-                    <h2 class="fw-normal">Nguyen Nhat Anh</h2>
-                </div>
-            </div>
-        </div>
+        
         <hr class="featurette-divider">
         <div>
             <h1 class="w-100 text-center ">Our Personas</h1>

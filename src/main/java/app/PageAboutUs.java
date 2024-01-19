@@ -1,6 +1,7 @@
 package app;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Map;
 
 import io.javalin.http.Context;
@@ -13,20 +14,15 @@ public class PageAboutUs implements Handler  {
     public void handle(Context context) throws Exception {
         Map<String, Object> model = new HashMap<String, Object>();
 
-        // JDBCConnection jdbc = new JDBCConnection();
-        // ArrayList<Member> members = jdbc.getMembers();
-        // for (Member member : members) {
-        //     System.out.println("\t" + member.getName() + ": " + member.getStudentId());
-        // }
-        
-    
+        JDBCConnection jdbc = new JDBCConnection();
+        ArrayList<Member> members = jdbc.getMembers();
+        model.put("members", members);
+      
         // TODO: Your work for Thymeleaf and JDBC
-
         
-    
+
 
         // No code below this
-
         context.render(TEMPLATE, model);
     }
 }

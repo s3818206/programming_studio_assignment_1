@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Climate Change Awareness</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -26,14 +27,63 @@
                     <a class="nav-link fs-5" href="/contact">Contact</a>
                 </li>
             </ul> 
-            <!-- TODO: Seaching functionality may change based GET and POST  requests -->
+            <!-- TODO: Seaching functionality may change based GET and POST requests -->
             <form class="d-flex me-5" role="search">
                 <input class="form-control me-2 fs-5" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success fs-5" type="submit">Search</button>
             </form>
         </div>
     </nav>      
-
     <!-- TODO: Work on the body of this page -->
+    <main>
+        <h1 class="w-100 text-center my-4">Group 04 - Team Member</h1>
+        <div>
+            <div class="container marketing">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==3}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 3}" th:text="${member.getStudentId()}"></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==1}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 1}" th:text="${member.getStudentId()}"></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"  role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==2}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 2}" th:text="${member.getStudentId()}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="container marketing mt-5">
+                <div class="w-100 d-flex flex-row justify-content-evenly">
+                    <div class="d-flex flex-column align-items-center">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==4}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 4}" th:text="${member.getStudentId()}"></p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <h2 class="fw-normal" th:each="member : ${members}" th:if="${member.getId==5}" th:text="${member.getName()} "></h2>
+                        <p th:each="member : ${members}" th:if="${member.getId == 5}" th:text="${member.getStudentId()}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="featurette-divider">
+        <div>
+            <h1 class="w-100 text-center ">Our Personas</h1>
+            <!-- TODO: Personas here, try to display the whole table-->
+        </div>
+        <div></div>
+    </main>
+
+    <footer>
+
+    </footer>
+
 </body>
 </html>

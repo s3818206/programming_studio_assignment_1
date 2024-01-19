@@ -1,0 +1,156 @@
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.carousel-image {
+    background-image: linear-gradient(
+            115deg,
+            rgba(58, 58, 158, 0.8),
+            rgba(54, 54, 219, 0.7)
+        ),
+        url(https://images.inc.com/uploaded_files/image/1920x1080/getty_517129164_279516.jpg);
+}
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+.carousel-item {
+    height: 32rem;
+}
+
+.marketing .col-lg-4 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.marketing .col-lg-4 p {
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
+}
+
+.featurette-divider {
+    margin: 5rem 0;
+}
+
+.featurette-heading {
+    letter-spacing: -0.05rem;
+}
+
+@media (min-width: 40em) {
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 7rem;
+    }
+}
+
+.blog-header-logo {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman',
+        serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+    font-size: 2.25rem;
+}
+
+.blog-header-logo:hover {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman',
+        serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
+.flex-auto {
+    flex: 0 0 auto;
+}
+
+.h-250 {
+    height: 250px;
+}
+@media (min-width: 768px) {
+    .h-md-250 {
+        height: 250px;
+    }
+}
+
+/* Pagination */
+.blog-pagination {
+    margin-bottom: 4rem;
+}
+
+/*
+   * Blog posts
+   */
+.blog-post {
+    margin-bottom: 4rem;
+}
+.blog-post-meta {
+    margin-bottom: 1.25rem;
+    color: #727272;
+}
+
+.bi {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+}
+
+/*
+   * Sidebar
+   */
+
+@media (min-width: 768px) {
+    .sidebar .offcanvas-lg {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px;
+    }
+    .navbar-search {
+        display: block;
+    }
+}
+
+.sidebar .nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.sidebar .nav-link.active {
+    color: #2470dc;
+}
+
+.sidebar-heading {
+    font-size: 0.75rem;
+}
+
+/*
+   * Navbar
+   */
+
+.navbar-brand {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar .form-control {
+    padding: 0.75rem 1rem;
+}
