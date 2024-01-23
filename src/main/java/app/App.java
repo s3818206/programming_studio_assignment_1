@@ -12,7 +12,7 @@ public class App {
     public static final String      JS_DIR         = "js/";
 
     public static void main(String[] args) {
-    
+     
         Javalin app = Javalin.create(config -> {
             config.registerPlugin(new RouteOverviewPlugin("/help/routes")); 
             config.addStaticFiles(CSS_DIR);

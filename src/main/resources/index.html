@@ -13,11 +13,8 @@
             rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous" />
-        <link
-            type="text/css"
-            href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
-            rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" th:src="index.js"></script>
     </head>
     <body class="vw-100 vh-100">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -45,7 +42,7 @@
                         type="search"
                         placeholder="Search"
                         aria-label="Search" />
-                    <button class="btn btn-outline-success fs-5" type="submit">
+                    <button class="btn btn-primary fs-5" type="submit">
                         Search
                     </button>
                 </form>
@@ -89,6 +86,7 @@
                                 <p>
                                     Explore temperature and population patterns
                                     from
+                                    <!-- TODO: Make this the from the database -->
                                     <b>1750 - 2013</b>
                                 </p>
                                 <p>
@@ -100,21 +98,15 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <svg
-                            class="bd-placeholder-img"
+                        <img
+                            class="bd-placeholder-img carousel-image-2"
                             width="100%"
                             height="100%"
-                            aria-hidden="true"
                             preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect
-                                width="100%"
-                                height="100%"
-                                fill="var(--bs-secondary-color)" />
-                        </svg>
+                            focusable="false" />
                         <div class="container">
                             <div class="carousel-caption">
-                                <h1>Another example headline.</h1>
+                                <h1>Finsish your research</h1>
                                 <p>
                                     Some representative placeholder content for
                                     the second slide of the carousel.
@@ -128,18 +120,12 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <svg
-                            class="bd-placeholder-img"
+                        <img
+                            class="bd-placeholder-img carousel-image-3"
                             width="100%"
                             height="100%"
-                            aria-hidden="true"
                             preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <rect
-                                width="100%"
-                                height="100%"
-                                fill="var(--bs-secondary-color)" />
-                        </svg>
+                            focusable="false" />
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>Another example headline.</h1>
@@ -186,40 +172,30 @@
                                 <div class="card border-left-md border-soft">
                                     <div class="card-body text-center">
                                         <h6 class="font-weight-bold mb-2">
-                                            Global Temperature
+                                            Global Temperature in <b>2015</b>
                                         </h6>
                                         <h2 class="text-gray mb-0">
                                             <span
                                                 class="counter display-3 mr-2">
                                                 1.9
                                             </span>
-                                            F
                                         </h2>
                                         <span
-                                            class="text-center text-muted mb-0">
-                                            since 1880
-                                        </span>
+                                            class="text-center text-muted mb-0"></span>
                                     </div>
                                 </div>
                                 <div class="card border-left-md border-soft">
                                     <div class="card-body text-center">
                                         <h6 class="font-weight-bold mb-2">
-                                            World population
+                                            World Population in <b>2013</b> 
                                         </h6>
                                         <h2 class="text-gray mb-0">
-                                            <span class="icon-danger mr-2">
-                                                <i
-                                                    class="fas fa-long-arrow-alt-down"></i>
-                                            </span>
                                             <span
-                                                class="counter display-3 mr-2">
-                                                13
-                                            </span>
+                                                th:text="${worldPopulation_2013}"
+                                                class="counter display-3 mr-2"></span>
                                         </h2>
                                         <span
-                                            class="text-center text-muted mb-0">
-                                            percent per decade
-                                        </span>
+                                            class="text-center text-muted mb-0"></span>
                                     </div>
                                 </div>
                             </div>
@@ -265,8 +241,10 @@
                         </div>
                     </div>
 
+                    <!-- Dashboard here -->
                     <canvas
                         class="my-4 w-100"
+                        th:value="${worldPopulation}"
                         id="myChart"
                         width="900"
                         height="380"></canvas>
@@ -397,7 +375,7 @@
                                     <td>text</td>
                                 </tr>
                             </tbody>
-                        </table>    
+                        </table>
                     </div>
                 </div>
             </div>
@@ -409,363 +387,605 @@
                     Get the latest new about population
                 </p>
                 <div class="row mb-2 mt-5">
-                    <div class="col-md-4">
-                        <div
-                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                        Trendings
+                    </h3>
+                    <div class="row mb-2">
+                        <div class="col-md-6">
                             <div
-                                class="col p-4 d-flex flex-column position-static">
-                                <strong
-                                    class="d-inline-block mb-2 text-primary-emphasis">
-                                    World
-                                </strong>
-                                <h3 class="mb-0">Featured post</h3>
-                                <div class="mb-1 text-body-secondary">
-                                    Nov 12
+                                class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                <div
+                                    class="col p-4 d-flex flex-column position-static">
+                                    <strong
+                                        class="d-inline-block mb-2 text-primary-emphasis">
+                                        World
+                                    </strong>
+                                    <h3 class="mb-0">Featured post</h3>
+                                    <div class="mb-1 text-body-secondary">
+                                        Nov 12
+                                    </div>
+                                    <p class="card-text mb-auto">
+                                        This is a wider card with supporting
+                                        text below as a natural lead-in to
+                                        additional content.
+                                    </p>
+                                    <a
+                                        href="#"
+                                        class="icon-link gap-1 icon-link-hover stretched-link">
+                                        Continue reading
+                                        <svg class="bi">
+                                            <use
+                                                xlink:href="#chevron-right"></use>
+                                        </svg>
+                                    </a>
                                 </div>
-                                <p class="card-text mb-auto">Text</p>
-                                <a
-                                    href="#"
-                                    class="icon-link gap-1 icon-link-hover stretched-link">
-                                    Continue reading
-                                    <svg class="bi">
-                                        <use xlink:href="#chevron-right" />
+                                <div class="col-auto d-none d-lg-block">
+                                    <svg
+                                        class="bd-placeholder-img"
+                                        width="200"
+                                        height="250"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        role="img"
+                                        aria-label="Placeholder: Thumbnail"
+                                        preserveAspectRatio="xMidYMid slice"
+                                        focusable="false">
+                                        <title>Placeholder</title>
+                                        <rect
+                                            width="100%"
+                                            height="100%"
+                                            fill="#55595c"></rect>
+                                        <text
+                                            x="50%"
+                                            y="50%"
+                                            fill="#eceeef"
+                                            dy=".3em">
+                                            Thumbnail
+                                        </text>
                                     </svg>
-                                </a>
-                            </div>
-                            <div class="col-auto d-none d-lg-block">
-                                <svg
-                                    class="bd-placeholder-img"
-                                    width="200"
-                                    height="250"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    role="img"
-                                    aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice"
-                                    focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect
-                                        width="100%"
-                                        height="100%"
-                                        fill="#55595c" />
-                                    <text
-                                        x="50%"
-                                        y="50%"
-                                        fill="#eceeef"
-                                        dy=".3em">
-                                        Thumbnail
-                                    </text>
-                                </svg>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div
-                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col-md-6">
                             <div
-                                class="col p-4 d-flex flex-column position-static">
-                                <strong
-                                    class="d-inline-block mb-2 text-success-emphasis">
-                                    Design
-                                </strong>
-                                <h3 class="mb-0">Post title</h3>
-                                <div class="mb-1 text-body-secondary">
-                                    Nov 11
+                                class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                <div
+                                    class="col p-4 d-flex flex-column position-static">
+                                    <strong
+                                        class="d-inline-block mb-2 text-success-emphasis">
+                                        Design
+                                    </strong>
+                                    <h3 class="mb-0">Post title</h3>
+                                    <div class="mb-1 text-body-secondary">
+                                        Nov 11
+                                    </div>
+                                    <p class="mb-auto">
+                                        This is a wider card with supporting
+                                        text below as a natural lead-in to
+                                        additional content.
+                                    </p>
+                                    <a
+                                        href="#"
+                                        class="icon-link gap-1 icon-link-hover stretched-link">
+                                        Continue reading
+                                        <svg class="bi">
+                                            <use
+                                                xlink:href="#chevron-right"></use>
+                                        </svg>
+                                    </a>
                                 </div>
-                                <p class="mb-auto">Description</p>
-                                <a
-                                    href="#"
-                                    class="icon-link gap-1 icon-link-hover stretched-link">
-                                    Continue reading
-                                    <svg class="bi">
-                                        <use xlink:href="#chevron-right" />
+                                <div class="col-auto d-none d-lg-block">
+                                    <svg
+                                        class="bd-placeholder-img"
+                                        width="200"
+                                        height="250"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        role="img"
+                                        aria-label="Placeholder: Thumbnail"
+                                        preserveAspectRatio="xMidYMid slice"
+                                        focusable="false">
+                                        <title>Placeholder</title>
+                                        <rect
+                                            width="100%"
+                                            height="100%"
+                                            fill="#55595c"></rect>
+                                        <text
+                                            x="50%"
+                                            y="50%"
+                                            fill="#eceeef"
+                                            dy=".3em">
+                                            Thumbnail
+                                        </text>
                                     </svg>
-                                </a>
-                            </div>
-                            <div class="col-auto d-none d-lg-block">
-                                <svg
-                                    class="bd-placeholder-img"
-                                    width="200"
-                                    height="250"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    role="img"
-                                    aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice"
-                                    focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect
-                                        width="100%"
-                                        height="100%"
-                                        fill="#55595c" />
-                                    <text
-                                        x="50%"
-                                        y="50%"
-                                        fill="#eceeef"
-                                        dy=".3em">
-                                        Thumbnail
-                                    </text>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div
-                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                            <div
-                                class="col p-4 d-flex flex-column position-static">
-                                <strong
-                                    class="d-inline-block mb-2 text-success-emphasis">
-                                    Design
-                                </strong>
-                                <h3 class="mb-0">Post title</h3>
-                                <div class="mb-1 text-body-secondary">
-                                    Nov 11
                                 </div>
-                                <p class="mb-auto">Description</p>
-                                <a
-                                    href="#"
-                                    class="icon-link gap-1 icon-link-hover stretched-link">
-                                    Continue reading
-                                    <svg class="bi">
-                                        <use xlink:href="#chevron-right" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="col-auto d-none d-lg-block">
-                                <svg
-                                    class="bd-placeholder-img"
-                                    width="200"
-                                    height="250"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    role="img"
-                                    aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice"
-                                    focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect
-                                        width="100%"
-                                        height="100%"
-                                        fill="#55595c" />
-                                    <text
-                                        x="50%"
-                                        y="50%"
-                                        fill="#eceeef"
-                                        dy=".3em">
-                                        Thumbnail
-                                    </text>
-                                </svg>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row mb-2 mt-5 mb-5">
+                    <h3 class="pb-4 mb-4 fst-italic border-bottom">News</h3>
+                    <div class="album py-5 bg-body-tertiary">
+                        <div class="container">
+                            <div
+                                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                                <div class="col">
+                                    <div class="card shadow-sm">
+                                        <svg
+                                            class="bd-placeholder-img card-img-top"
+                                            width="100%"
+                                            height="225"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            role="img"
+                                            aria-label="Placeholder: Thumbnail"
+                                            preserveAspectRatio="xMidYMid slice"
+                                            focusable="false">
+                                            <title>Placeholder</title>
+                                            <rect
+                                                width="100%"
+                                                height="100%"
+                                                fill="#55595c" />
+                                            <text
+                                                x="50%"
+                                                y="50%"
+                                                fill="#eceeef"
+                                                dy=".3em">
+                                                Thumbnail
+                                            </text>
+                                        </svg>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                This is a wider card with
+                                                supporting text below as a
+                                                natural lead-in to additional
+                                                content. This content is a
+                                                little bit longer.
+                                            </p>
+                                            <div
+                                                class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-sm btn-outline-secondary">
+                                                        View
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-sm btn-outline-secondary">
+                                                        Edit
+                                                    </button>
+                                                </div>
+                                                <small
+                                                    class="text-body-secondary">
+                                                    9 mins
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card shadow-sm">
+                                        <svg
+                                            class="bd-placeholder-img card-img-top"
+                                            width="100%"
+                                            height="225"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            role="img"
+                                            aria-label="Placeholder: Thumbnail"
+                                            preserveAspectRatio="xMidYMid slice"
+                                            focusable="false">
+                                            <title>Placeholder</title>
+                                            <rect
+                                                width="100%"
+                                                height="100%"
+                                                fill="#55595c" />
+                                            <text
+                                                x="50%"
+                                                y="50%"
+                                                fill="#eceeef"
+                                                dy=".3em">
+                                                Thumbnail
+                                            </text>
+                                        </svg>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                This is a wider card with
+                                                supporting text below as a
+                                                natural lead-in to additional
+                                                content. This content is a
+                                                little bit longer.
+                                            </p>
+                                            <div
+                                                class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-sm btn-outline-secondary">
+                                                        View
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-sm btn-outline-secondary">
+                                                        Edit
+                                                    </button>
+                                                </div>
+                                                <small
+                                                    class="text-body-secondary">
+                                                    9 mins
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card shadow-sm">
+                                        <svg
+                                            class="bd-placeholder-img card-img-top"
+                                            width="100%"
+                                            height="225"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            role="img"
+                                            aria-label="Placeholder: Thumbnail"
+                                            preserveAspectRatio="xMidYMid slice"
+                                            focusable="false">
+                                            <title>Placeholder</title>
+                                            <rect
+                                                width="100%"
+                                                height="100%"
+                                                fill="#55595c" />
+                                            <text
+                                                x="50%"
+                                                y="50%"
+                                                fill="#eceeef"
+                                                dy=".3em">
+                                                Thumbnail
+                                            </text>
+                                        </svg>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                This is a wider card with
+                                                supporting text below as a
+                                                natural lead-in to additional
+                                                content. This content is a
+                                                little bit longer.
+                                            </p>
+                                            <div
+                                                class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-sm btn-outline-secondary">
+                                                        View
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-sm btn-outline-secondary">
+                                                        Edit
+                                                    </button>
+                                                </div>
+                                                <small
+                                                    class="text-body-secondary">
+                                                    9 mins
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row g-5">
                     <div class="col-md-8">
                         <h3 class="pb-4 mb-4 fst-italic border-bottom">
                             From the Firehose
                         </h3>
-
-                        <article class="blog-post">
-                            <h2 class="display-5 link-body-emphasis mb-1">
-                                Sample blog post
-                            </h2>
-                            <p class="blog-post-meta">
-                                January 1, 2021 by
-                                <a href="#">Mark</a>
-                            </p>
-
-                            <p>
-                                This blog post shows a few different types of
-                                content that’s supported and styled with
-                                Bootstrap. Basic typography, lists, tables,
-                                images, code, and more are all supported as
-                                expected.
-                            </p>
-                            <hr />
-                            <p>
-                                This is some additional paragraph placeholder
-                                content. It has been written to fill the
-                                available space and show how a longer snippet of
-                                text affects the surrounding content. We'll
-                                repeat it often to keep the demonstration
-                                flowing, so be on the lookout for this exact
-                                same string of text.
-                            </p>
-                            <h2>Blockquotes</h2>
-                            <p>This is an example blockquote in action:</p>
-                            <blockquote class="blockquote">
-                                <p>Quoted text goes here.</p>
-                            </blockquote>
-                            <p>
-                                This is some additional paragraph placeholder
-                                content. It has been written to fill the
-                                available space and show how a longer snippet of
-                                text affects the surrounding content. We'll
-                                repeat it often to keep the demonstration
-                                flowing, so be on the lookout for this exact
-                                same string of text.
-                            </p>
-                            <h3>Example lists</h3>
-                            <p>
-                                This is some additional paragraph placeholder
-                                content. It's a slightly shorter version of the
-                                other highly repetitive body text used
-                                throughout. This is an example unordered list:
-                            </p>
-                            <ul>
-                                <li>First list item</li>
-                                <li>
-                                    Second list item with a longer description
-                                </li>
-                                <li>Third list item to close it out</li>
-                            </ul>
-                            <p>And this is an ordered list:</p>
-                            <ol>
-                                <li>First list item</li>
-                                <li>
-                                    Second list item with a longer description
-                                </li>
-                                <li>Third list item to close it out</li>
-                            </ol>
-                            <p>And this is a definition list:</p>
-                            <dl>
-                                <dt>HyperText Markup Language (HTML)</dt>
-                                <dd>
-                                    The language used to describe and define the
-                                    content of a Web page
-                                </dd>
-                                <dt>Cascading Style Sheets (CSS)</dt>
-                                <dd>
-                                    Used to describe the appearance of Web
-                                    content
-                                </dd>
-                                <dt>JavaScript (JS)</dt>
-                                <dd>
-                                    The programming language used to build
-                                    advanced Web sites and applications
-                                </dd>
-                            </dl>
-                            <h2>Inline HTML elements</h2>
-                            <p>
-                                HTML defines a long list of available inline
-                                tags, a complete list of which can be found on
-                                the
+                        <!-- The news works here -->
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c"></rect>
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-success-emphasis">
+                                    Design
+                                </strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 11
+                                </div>
+                                <p class="mb-auto">
+                                    This is a wider card with supporting text
+                                    below as a natural lead-in to additional
+                                    content.
+                                </p>
                                 <a
-                                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">
-                                    Mozilla Developer Network
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right"></use>
+                                    </svg>
                                 </a>
-                                .
-                            </p>
-                            <ul>
-                                <li>
-                                    <strong>To bold text</strong>
-                                    , use
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        &lt;strong&gt;
-                                    </code>
-                                    .
-                                </li>
-                                <li>
-                                    <em>To italicize text</em>
-                                    , use
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        &lt;em&gt;
-                                    </code>
-                                    .
-                                </li>
-                                <li>
-                                    Abbreviations, like
-                                    <abbr title="HyperText Markup Language">
-                                        HTML
-                                    </abbr>
-                                    should use
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        &lt;abbr&gt;
-                                    </code>
-                                    , with an optional
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        title
-                                    </code>
-                                    attribute for the full phrase.
-                                </li>
-                                <li>
-                                    Citations, like
-                                    <cite>— Mark Otto</cite>
-                                    , should use
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        &lt;cite&gt;
-                                    </code>
-                                    .
-                                </li>
-                                <li>
-                                    <del>Deleted</del>
-                                    text should use
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        &lt;del&gt;
-                                    </code>
-                                    and
-                                    <ins>inserted</ins>
-                                    text should use
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        &lt;ins&gt;
-                                    </code>
-                                    .
-                                </li>
-                                <li>
-                                    Superscript
-                                    <sup>text</sup>
-                                    uses
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        &lt;sup&gt;
-                                    </code>
-                                    and subscript
-                                    <sub>text</sub>
-                                    uses
-                                    <code
-                                        class="language-plaintext highlighter-rouge">
-                                        &lt;sub&gt;
-                                    </code>
-                                    .
-                                </li>
-                            </ul>
-                            <p>
-                                Most of these elements are styled by browsers
-                                with few modifications on our part.
-                            </p>
-                            <h2>Heading</h2>
-                            <p>
-                                This is some additional paragraph placeholder
-                                content. It has been written to fill the
-                                available space and show how a longer snippet of
-                                text affects the surrounding content. We'll
-                                repeat it often to keep the demonstration
-                                flowing, so be on the lookout for this exact
-                                same string of text.
-                            </p>
-                            <h3>Sub-heading</h3>
-                            <p>
-                                This is some additional paragraph placeholder
-                                content. It has been written to fill the
-                                available space and show how a longer snippet of
-                                text affects the surrounding content. We'll
-                                repeat it often to keep the demonstration
-                                flowing, so be on the lookout for this exact
-                                same string of text.
-                            </p>
-                            <pre><code>Example code block</code></pre>
-                            <p>
-                                This is some additional paragraph placeholder
-                                content. It's a slightly shorter version of the
-                                other highly repetitive body text used
-                                throughout.
-                            </p>
-                        </article>
+                            </div>
+                        </div>
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c"></rect>
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-success-emphasis">
+                                    Design
+                                </strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 11
+                                </div>
+                                <p class="mb-auto">
+                                    This is a wider card with supporting text
+                                    below as a natural lead-in to additional
+                                    content.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c"></rect>
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-success-emphasis">
+                                    Design
+                                </strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 11
+                                </div>
+                                <p class="mb-auto">
+                                    This is a wider card with supporting text
+                                    below as a natural lead-in to additional
+                                    content.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c"></rect>
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-success-emphasis">
+                                    Design
+                                </strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 11
+                                </div>
+                                <p class="mb-auto">
+                                    This is a wider card with supporting text
+                                    below as a natural lead-in to additional
+                                    content.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c"></rect>
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-success-emphasis">
+                                    Design
+                                </strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 11
+                                </div>
+                                <p class="mb-auto">
+                                    This is a wider card with supporting text
+                                    below as a natural lead-in to additional
+                                    content.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col-auto d-none d-lg-block">
+                                <svg
+                                    class="bd-placeholder-img"
+                                    width="200"
+                                    height="250"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    role="img"
+                                    aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect
+                                        width="100%"
+                                        height="100%"
+                                        fill="#55595c"></rect>
+                                    <text
+                                        x="50%"
+                                        y="50%"
+                                        fill="#eceeef"
+                                        dy=".3em">
+                                        Thumbnail
+                                    </text>
+                                </svg>
+                            </div>
+                            <div
+                                class="col p-4 d-flex flex-column position-static">
+                                <strong
+                                    class="d-inline-block mb-2 text-success-emphasis">
+                                    Design
+                                </strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-body-secondary">
+                                    Nov 11
+                                </div>
+                                <p class="mb-auto">
+                                    This is a wider card with supporting text
+                                    below as a natural lead-in to additional
+                                    content.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi">
+                                        <use xlink:href="#chevron-right"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-md-4">
@@ -870,24 +1090,6 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
-
-                            <div class="p-4">
-                                <h4 class="fst-italic">Archives</h4>
-                                <ol class="list-unstyled mb-0">
-                                    <li><a href="#">March 2021</a></li>
-                                    <li><a href="#">February 2021</a></li>
-                                    <li><a href="#">January 2021</a></li>
-                                    <li><a href="#">December 2020</a></li>
-                                    <li><a href="#">November 2020</a></li>
-                                    <li><a href="#">October 2020</a></li>
-                                    <li><a href="#">September 2020</a></li>
-                                    <li><a href="#">August 2020</a></li>
-                                    <li><a href="#">July 2020</a></li>
-                                    <li><a href="#">June 2020</a></li>
-                                    <li><a href="#">May 2020</a></li>
-                                    <li><a href="#">April 2020</a></li>
-                                </ol>
                             </div>
                         </div>
                     </div>
@@ -1050,6 +1252,45 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-        <script src="index.js"></script>
+        <script th:inline="javascript">
+            var year = [[${year}]];
+            var worldPopulation = [[${worldPopulation}]];
+
+            (() => {
+                'use strict';
+                // Graphs
+                const ctx = document.getElementById('myChart');
+                // eslint-disable-next-line no-unused-vars
+                const myChart = new Chart(ctx, {
+                    type: 'line',
+
+                    data: {
+                        labels: year,
+                        datasets: [
+                            {
+                                data: worldPopulation,
+                                label: 'World Population',
+                                lineTension: 0,
+                                backgroundColor: 'transparent',
+                                borderColor: '#007bff',
+                                borderWidth: 4,
+                                pointBackgroundColor: '#007bff',
+                            },
+                        ],
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            tooltip: {
+                                boxPadding: 3,
+                            },
+                        },
+                    },
+                });
+            })();
+        </script>
+        <!-- <script type="text/javascript" inline="javascript" th:src="@{/index.js}"></script> -->
     </body>
 </html>
