@@ -1,7 +1,11 @@
 package app;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
+import javax.swing.plaf.PopupMenuUI;
+
+import java.io.PipedOutputStream;
+
+// import javax.naming.spi.DirStateFactory.Result;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -46,23 +50,21 @@ public class JDBCConnection {
         }
         return members;
     }
-
-    public long getWorldPopulation_2013() {
-        long worldPopulation_2013 = 0 ;
-        Connection connection = null;
-
+    
+    public ArrayList<String> getCountryList(){
+        ArrayList<String> CountryList = new ArrayList<String>();
+        Connection connection = null; 
         try {
             connection = DriverManager.getConnection(DATASET_DATABASE);
             Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30); 
+            statement.setQueryTimeout(30);
 
-            String query = "SELECT SUM(\"2013\") AS total FROM Population";
+            String query= "SELECT COUNTRYNAME FROM POPULATION";
             ResultSet results = statement.executeQuery(query);
-            if(results.next()){
-                worldPopulation_2013 = results.getLong("total");
+            while(results.next()){
+                CountryList.add(results.getString("CountryName"));
             }
-            return worldPopulation_2013;
-        
+            return CountryList; 
         } catch (SQLException error ) {
             System.err.println(error.getMessage());
         } finally { 
@@ -74,11 +76,64 @@ public class JDBCConnection {
                 System.err.println(error.getMessage());
             }
         }
-        return worldPopulation_2013;
+        return CountryList;
     }
 
-    public ArrayList<WorldPopulation> getWorldPopulation() {
-        ArrayList<WorldPopulation> worldPopulations = new ArrayList<WorldPopulation>();
+    public Population getPopulation(String country, int startYear, int endYear ){
+        Population population = new Population(); 
+        Connection connection = null; 
+        try {
+            connection = DriverManager.getConnection(DATASET_DATABASE);
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+            if(country == null){
+                
+            } else if(country.equals("Global")){
+                String query= "SELECT CountryName, CountryCode";
+                for(int i = startYear; i <= endYear; i++){
+                    query+= ", [" + i + "]"; 
+                }
+                query+= "FROM Population WHERE CountryName = \"World\"";
+                ResultSet results = statement.executeQuery(query);
+                while(results.next()){
+                    population.setCountryName(results.getString("CountryName"));
+                    population.setCountryCode(results.getString("CountryCode"));
+                    for(int i = startYear; i <= endYear; i++){
+                        population.setPopulations(i, results.getLong(Integer.toString(i)));
+                    }
+                }
+            }else {
+                String query= "SELECT CountryName, CountryCode";
+                for(int i = startYear; i <= endYear; i++){
+                    query+= ", [" + i + "]"; 
+                }
+                query+= "FROM Population WHERE CountryName = \"" + country + "\"";
+                ResultSet results = statement.executeQuery(query);
+                while(results.next()){
+                    population.setCountryName(results.getString("CountryName"));
+                    population.setCountryCode(results.getString("CountryCode"));
+                    for(int i = startYear; i <= endYear; i++){
+                        population.setPopulations(i, results.getLong(Integer.toString(i)));
+                    }
+                }
+            }
+            return population; 
+        } catch (SQLException error ) {
+            System.err.println(error.getMessage());
+        } finally { 
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException error) {
+                System.err.println(error.getMessage());
+            }
+        }
+        return population;
+    }
+
+    public ArrayList<GlobalTemp> getGlobalTemp(int startYear, int endYear){
+        ArrayList<GlobalTemp> globalYearlyTemps = new ArrayList<GlobalTemp>();
         Connection connection = null;
 
         try {
@@ -86,15 +141,21 @@ public class JDBCConnection {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
 
-            String query = "SELECT * FROM WORLDPOPULATION";
+            String query = "SELECT * FROM GlobalYearlyTemp WHERE Year BETWEEN " + startYear + " AND " + endYear;
             ResultSet results = statement.executeQuery(query);
             while(results.next()){
-                WorldPopulation worldPopulation = new WorldPopulation(); 
-                worldPopulation.setYear(results.getString("Year"));
-                worldPopulation.setPopulation(results.getLong("WorldPopulation"));
-                worldPopulations.add(worldPopulation);
+                GlobalTemp globalYearlyTemp = new GlobalTemp();
+                globalYearlyTemp.setYear(results.getInt("Year"));
+                globalYearlyTemp.setAverageTemp(results.getDouble("AverageTemperature"));
+                globalYearlyTemp.setMinTemp(results.getDouble("MinimumTemperature"));
+                globalYearlyTemp.setMaxTemp(results.getDouble("MaximumTemperature"));
+                globalYearlyTemp.setLandOceanAverageTemp(results.getDouble("LandOceanAverageTemperature"));
+                globalYearlyTemp.setLandOceanMinTemp(results.getDouble("LandOceanMinimumTemperature"));
+                globalYearlyTemp.setLandOceanMaxTemp(results.getDouble("LandOceanMaximumTemperature"));
+
+                globalYearlyTemps.add(globalYearlyTemp);
             }
-            return worldPopulations;
+            return globalYearlyTemps;
         } catch (SQLException error ) {
             System.err.println(error.getMessage());
         } finally { 
@@ -106,7 +167,12 @@ public class JDBCConnection {
                 System.err.println(error.getMessage());
             }
         }
-        return worldPopulations;
+        return globalYearlyTemps;
     }
+
     
+
+    public ArrayList<Temperature>  getCountryTemperature(String country, int startYear, int endYear){
+        return null; 
+    }
 }

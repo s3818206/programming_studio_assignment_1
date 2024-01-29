@@ -1,219 +1,499 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Climate Change Awareness</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid d-flex flex-row justify-content-between align-items-center">
-            <a class="navbar-brand ms-5 fs-3" href="/">Climate Insight</a>
-            <ul class="navbar-nav mb-lg-0">
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/about-us">About Us</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/news">News</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/contact">Contact</a>
-                </li>
-            </ul> 
-            <!-- TODO: Seaching functionality may change based GET and POST  requests -->
-            <form class="d-flex me-5" role="search">
-                <input class="form-control me-2 fs-5" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success fs-5" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>    
+<html
+    lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Climate Change Awareness</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar"></nav>
 
-    <!-- TODO: Work on the body of this page -->
-    <div id="blog-content" class="blog-content-area fix">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="single-blog-post">
-                        <div class="post-img">
-                            <a href="#"><img src="img/blog-column-2/1.jpg" alt="Popular Post" /></a>
-                            <a href="#" class="post-tag">photography</a>
-                            <div class="post-info">
-                                <p>
-                                    <span class="post-date"><a href="#">July 10, 2015</a></span>
-                                    <span class="post-comments"><a href="#">3 comments</a></span>
-                                    <span class="post-social-links">
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Likes"><i class="fa fa-heart"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                                    </span>
+        <!-- TODO: Work on the body of this page -->
+        <div id="blog-content" class="blog-content-area fix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="single-blog-post">
+                            <div class="post-img">
+                                <a href="#">
+                                    <img
+                                        src="img/blog-column-2/1.jpg"
+                                        alt="Popular Post" />
+                                </a>
+                                <a href="#" class="post-tag">photography</a>
+                                <div class="post-info">
+                                    <p>
+                                        <span class="post-date">
+                                            <a href="#">July 10, 2015</a>
+                                        </span>
+                                        <span class="post-comments">
+                                            <a href="#">3 comments</a>
+                                        </span>
+                                        <span class="post-social-links">
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Likes">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Google+">
+                                                <i
+                                                    class="fa fa-google-plus"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Pinterest">
+                                                <i class="fa fa-pinterest"></i>
+                                            </a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h6 class="post-title">
+                                    <a href="#">Woman of Slaves</a>
+                                </h6>
+                                <p class="post-short-desc">
+                                    Lorem ipsum dolor sit amet, consegectetur
+                                    adipisicing elit, sed do eiusmod tem por
+                                    incididunt labore et dolore aliqua. Ut enim
+                                    ad minim veniam, nostrud exercitation
+                                    ullamco laboris nisi onsegectetur
+                                    adipisicing elit,
                                 </p>
+                                <a href="#" class="continue-link">
+                                    Continue Reading...
+                                </a>
                             </div>
                         </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="#">Woman of Slaves</a></h6>
-                            <p class="post-short-desc">Lorem ipsum dolor sit amet, consegectetur adipisicing 
-                            elit, sed do eiusmod tem por incididunt labore et dolore  aliqua. Ut enim ad minim 
-                            veniam, nostrud exercitation ullamco laboris nisi onsegectetur adipisicing elit,</p>
-                            <a href="#" class="continue-link">Continue Reading...</a>
-                        </div>
-                    </div><!-- /.single-blog-post -->
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="single-blog-post">
-                        <div class="post-img">
-                            <a href="#"><img src="img/blog-column-2/2.jpg" alt="Popular Post" /></a>
-                            <a href="#" class="post-tag">photography</a>
-                            <div class="post-info">
-                                <p>
-                                    <span class="post-date"><a href="#">July 10, 2015</a></span>
-                                    <span class="post-comments"><a href="#">3 comments</a></span>
-                                    <span class="post-social-links">
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Likes"><i class="fa fa-heart"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                                    </span>
+                        <!-- /.single-blog-post -->
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="single-blog-post">
+                            <div class="post-img">
+                                <a href="#">
+                                    <img
+                                        src="img/blog-column-2/2.jpg"
+                                        alt="Popular Post" />
+                                </a>
+                                <a href="#" class="post-tag">photography</a>
+                                <div class="post-info">
+                                    <p>
+                                        <span class="post-date">
+                                            <a href="#">July 10, 2015</a>
+                                        </span>
+                                        <span class="post-comments">
+                                            <a href="#">3 comments</a>
+                                        </span>
+                                        <span class="post-social-links">
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Likes">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Google+">
+                                                <i
+                                                    class="fa fa-google-plus"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Pinterest">
+                                                <i class="fa fa-pinterest"></i>
+                                            </a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h6 class="post-title">
+                                    <a href="#">The Night of the Teacher</a>
+                                </h6>
+                                <p class="post-short-desc">
+                                    Lorem ipsum dolor sit amet, consegectetur
+                                    adipisicing elit, sed do eiusmod tem por
+                                    incididunt labore et dolore aliqua. Ut enim
+                                    ad minim veniam, nostrud exercitation
+                                    ullamco laboris nisi onsegectetur
+                                    adipisicing elit,
                                 </p>
+                                <a href="#" class="continue-link">
+                                    Continue Reading...
+                                </a>
                             </div>
                         </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="#">The Night of the Teacher</a></h6>
-                            <p class="post-short-desc">Lorem ipsum dolor sit amet, consegectetur adipisicing 
-                            elit, sed do eiusmod tem por incididunt labore et dolore  aliqua. Ut enim ad minim 
-                            veniam, nostrud exercitation ullamco laboris nisi onsegectetur adipisicing elit,</p>
-                            <a href="#" class="continue-link">Continue Reading...</a>
-                        </div>
-                    </div><!-- /.single-blog-post -->
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="single-blog-post">
-                        <div class="post-img">
-                            <a href="#"><img src="img/blog-column-2/3.jpg" alt="Popular Post" /></a>
-                            <a href="#" class="post-tag">photography</a>
-                            <div class="post-info">
-                                <p>
-                                    <span class="post-date"><a href="#">July 10, 2015</a></span>
-                                    <span class="post-comments"><a href="#">3 comments</a></span>
-                                    <span class="post-social-links">
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Likes"><i class="fa fa-heart"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                                    </span>
+                        <!-- /.single-blog-post -->
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="single-blog-post">
+                            <div class="post-img">
+                                <a href="#">
+                                    <img
+                                        src="img/blog-column-2/3.jpg"
+                                        alt="Popular Post" />
+                                </a>
+                                <a href="#" class="post-tag">photography</a>
+                                <div class="post-info">
+                                    <p>
+                                        <span class="post-date">
+                                            <a href="#">July 10, 2015</a>
+                                        </span>
+                                        <span class="post-comments">
+                                            <a href="#">3 comments</a>
+                                        </span>
+                                        <span class="post-social-links">
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Likes">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Google+">
+                                                <i
+                                                    class="fa fa-google-plus"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Pinterest">
+                                                <i class="fa fa-pinterest"></i>
+                                            </a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h6 class="post-title">
+                                    <a href="#">The Man of the Heat</a>
+                                </h6>
+                                <p class="post-short-desc">
+                                    Lorem ipsum dolor sit amet, consegectetur
+                                    adipisicing elit, sed do eiusmod tem por
+                                    incididunt labore et dolore aliqua. Ut enim
+                                    ad minim veniam, nostrud exercitation
+                                    ullamco laboris nisi onsegectetur
+                                    adipisicing elit,
                                 </p>
+                                <a href="#" class="continue-link">
+                                    Continue Reading...
+                                </a>
                             </div>
                         </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="#">The Man of the Heat</a></h6>
-                            <p class="post-short-desc">Lorem ipsum dolor sit amet, consegectetur adipisicing 
-                            elit, sed do eiusmod tem por incididunt labore et dolore  aliqua. Ut enim ad minim 
-                            veniam, nostrud exercitation ullamco laboris nisi onsegectetur adipisicing elit,</p>
-                            <a href="#" class="continue-link">Continue Reading...</a>
-                        </div>
-                    </div><!-- /.single-blog-post -->
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="single-blog-post">
-                        <div class="post-img">
-                            <a href="#"><img src="img/blog-column-2/4.jpg" alt="Popular Post" /></a>
-                            <a href="#" class="post-tag">photography</a>
-                            <div class="post-info">
-                                <p>
-                                    <span class="post-date"><a href="#">July 10, 2015</a></span>
-                                    <span class="post-comments"><a href="#">3 comments</a></span>
-                                    <span class="post-social-links">
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Likes"><i class="fa fa-heart"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                                    </span>
+                        <!-- /.single-blog-post -->
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="single-blog-post">
+                            <div class="post-img">
+                                <a href="#">
+                                    <img
+                                        src="img/blog-column-2/4.jpg"
+                                        alt="Popular Post" />
+                                </a>
+                                <a href="#" class="post-tag">photography</a>
+                                <div class="post-info">
+                                    <p>
+                                        <span class="post-date">
+                                            <a href="#">July 10, 2015</a>
+                                        </span>
+                                        <span class="post-comments">
+                                            <a href="#">3 comments</a>
+                                        </span>
+                                        <span class="post-social-links">
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Likes">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Google+">
+                                                <i
+                                                    class="fa fa-google-plus"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Pinterest">
+                                                <i class="fa fa-pinterest"></i>
+                                            </a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h6 class="post-title">
+                                    <a href="#">Tale in the Lover</a>
+                                </h6>
+                                <p class="post-short-desc">
+                                    Lorem ipsum dolor sit amet, consegectetur
+                                    adipisicing elit, sed do eiusmod tem por
+                                    incididunt labore et dolore aliqua. Ut enim
+                                    ad minim veniam, nostrud exercitation
+                                    ullamco laboris nisi onsegectetur
+                                    adipisicing elit,
                                 </p>
+                                <a href="#" class="continue-link">
+                                    Continue Reading...
+                                </a>
                             </div>
                         </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="#">Tale in the Lover</a></h6>
-                            <p class="post-short-desc">Lorem ipsum dolor sit amet, consegectetur adipisicing 
-                            elit, sed do eiusmod tem por incididunt labore et dolore  aliqua. Ut enim ad minim 
-                            veniam, nostrud exercitation ullamco laboris nisi onsegectetur adipisicing elit,</p>
-                            <a href="#" class="continue-link">Continue Reading...</a>
-                        </div>
-                    </div><!-- /.single-blog-post -->
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="single-blog-post">
-                        <div class="post-img">
-                            <a href="#"><img src="img/blog-column-2/5.jpg" alt="Popular Post" /></a>
-                            <a href="#" class="post-tag">photography</a>
-                            <div class="post-info">
-                                <p>
-                                    <span class="post-date"><a href="#">July 10, 2015</a></span>
-                                    <span class="post-comments"><a href="#">3 comments</a></span>
-                                    <span class="post-social-links">
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Likes"><i class="fa fa-heart"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                                    </span>
+                        <!-- /.single-blog-post -->
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="single-blog-post">
+                            <div class="post-img">
+                                <a href="#">
+                                    <img
+                                        src="img/blog-column-2/5.jpg"
+                                        alt="Popular Post" />
+                                </a>
+                                <a href="#" class="post-tag">photography</a>
+                                <div class="post-info">
+                                    <p>
+                                        <span class="post-date">
+                                            <a href="#">July 10, 2015</a>
+                                        </span>
+                                        <span class="post-comments">
+                                            <a href="#">3 comments</a>
+                                        </span>
+                                        <span class="post-social-links">
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Likes">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Google+">
+                                                <i
+                                                    class="fa fa-google-plus"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Pinterest">
+                                                <i class="fa fa-pinterest"></i>
+                                            </a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h6 class="post-title">
+                                    <a href="#">Summer Vacation Memories</a>
+                                </h6>
+                                <p class="post-short-desc">
+                                    Lorem ipsum dolor sit amet, consegectetur
+                                    adipisicing elit, sed do eiusmod tem por
+                                    incididunt labore et dolore aliqua. Ut enim
+                                    ad minim veniam, nostrud exercitation
+                                    ullamco laboris nisi onsegectetur
+                                    adipisicing elit,
                                 </p>
+                                <a href="#" class="continue-link">
+                                    Continue Reading...
+                                </a>
                             </div>
                         </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="#">Summer Vacation Memories</a></h6>
-                            <p class="post-short-desc">Lorem ipsum dolor sit amet, consegectetur adipisicing 
-                            elit, sed do eiusmod tem por incididunt labore et dolore  aliqua. Ut enim ad minim 
-                            veniam, nostrud exercitation ullamco laboris nisi onsegectetur adipisicing elit,</p>
-                            <a href="#" class="continue-link">Continue Reading...</a>
-                        </div>
-                    </div><!-- /.single-blog-post -->
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="single-blog-post">
-                        <div class="post-img">
-                            <a href="#"><img src="img/blog-column-2/6.jpg" alt="Popular Post" /></a>
-                            <a href="#" class="post-tag">photography</a>
-                            <div class="post-info">
-                                <p>
-                                    <span class="post-date"><a href="#">July 10, 2015</a></span>
-                                    <span class="post-comments"><a href="#">3 comments</a></span>
-                                    <span class="post-social-links">
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Likes"><i class="fa fa-heart"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                                    </span>
+                        <!-- /.single-blog-post -->
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="single-blog-post">
+                            <div class="post-img">
+                                <a href="#">
+                                    <img
+                                        src="img/blog-column-2/6.jpg"
+                                        alt="Popular Post" />
+                                </a>
+                                <a href="#" class="post-tag">photography</a>
+                                <div class="post-info">
+                                    <p>
+                                        <span class="post-date">
+                                            <a href="#">July 10, 2015</a>
+                                        </span>
+                                        <span class="post-comments">
+                                            <a href="#">3 comments</a>
+                                        </span>
+                                        <span class="post-social-links">
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Likes">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Google+">
+                                                <i
+                                                    class="fa fa-google-plus"></i>
+                                            </a>
+                                            <a
+                                                href="#"
+                                                data-toggle="tooltip"
+                                                data-placement="bottom"
+                                                title="Pinterest">
+                                                <i class="fa fa-pinterest"></i>
+                                            </a>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h6 class="post-title">
+                                    <a href="#">Lover in the Petals</a>
+                                </h6>
+                                <p class="post-short-desc">
+                                    Lorem ipsum dolor sit amet, consegectetur
+                                    adipisicing elit, sed do eiusmod tem por
+                                    incididunt labore et dolore aliqua. Ut enim
+                                    ad minim veniam, nostrud exercitation
+                                    ullamco laboris nisi onsegectetur
+                                    adipisicing elit,
                                 </p>
+                                <a href="#" class="continue-link">
+                                    Continue Reading...
+                                </a>
                             </div>
                         </div>
-                        <div class="post-content">
-                            <h6 class="post-title"><a href="#">Lover in the Petals</a></h6>
-                            <p class="post-short-desc">Lorem ipsum dolor sit amet, consegectetur adipisicing 
-                            elit, sed do eiusmod tem por incididunt labore et dolore  aliqua. Ut enim ad minim 
-                            veniam, nostrud exercitation ullamco laboris nisi onsegectetur adipisicing elit,</p>
-                            <a href="#" class="continue-link">Continue Reading...</a>
-                        </div>
-                    </div><!-- /.single-blog-post -->
-                </div>
-                <div class="load-more-button text-center">
-                    <a href="#" title="Load More">
-                        <i class="fa fa-caret-left"></i>load more<i class="fa fa-caret-right"></i>
-                    </a>
+                        <!-- /.single-blog-post -->
+                    </div>
+                    <div class="load-more-button text-center">
+                        <a href="#" title="Load More">
+                            <i class="fa fa-caret-left"></i>
+                            load more
+                            <i class="fa fa-caret-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-</body>
+        <script src="index.js"></script>
+    </body>
 </html>

@@ -17,37 +17,7 @@
         <script type="text/javascript" th:src="index.js"></script>
     </head>
     <body class="vw-100 vh-100">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div
-                class="container-fluid d-flex flex-row justify-content-between align-items-center">
-                <a class="navbar-brand ms-5 fs-3" href="/">Climate Insight</a>
-                <ul class="navbar-nav mb-lg-0">
-                    <li class="nav-item mx-3">
-                        <a class="nav-link fs-5" href="/about-us">About Us</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link fs-5" href="/dashboard">Dashboard</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link fs-5" href="/news">News</a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link fs-5" href="/contact">Contact</a>
-                    </li>
-                </ul>
-                <!-- TODO: Seaching functionality may change based GET and POST  requests -->
-                <form class="d-flex me-5" role="search">
-                    <input
-                        class="form-control me-2 fs-5"
-                        type="search"
-                        placeholder="Search"
-                        aria-label="Search" />
-                    <button class="btn btn-primary fs-5" type="submit">
-                        Search
-                    </button>
-                </form>
-            </div>
-        </nav>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar"></nav>
         <main>
             <div
                 id="myCarousel"
@@ -172,7 +142,8 @@
                                 <div class="card border-left-md border-soft">
                                     <div class="card-body text-center">
                                         <h6 class="font-weight-bold mb-2">
-                                            Global Temperature in <b>2015</b>
+                                            Global Temperature in
+                                            <b>2015</b>
                                         </h6>
                                         <h2 class="text-gray mb-0">
                                             <span
@@ -187,12 +158,12 @@
                                 <div class="card border-left-md border-soft">
                                     <div class="card-body text-center">
                                         <h6 class="font-weight-bold mb-2">
-                                            World Population in <b>2013</b> 
+                                            World Population in
+                                            <b>2013</b>
                                         </h6>
                                         <h2 class="text-gray mb-0">
                                             <span
-                                                th:text="${worldPopulation_2013}"
-                                                class="counter display-3 mr-2"></span>
+                                                class="counter display-3 mr-2">123456789</span>
                                         </h2>
                                         <span
                                             class="text-center text-muted mb-0"></span>
@@ -216,28 +187,23 @@
                 <div class="container">
                     <div
                         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 class="h2">Dashboard</h1>
+                        <h1 class="h2">
+                            Temperature and Population change by Country/Global
+                        </h1>
                         <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group me-2">
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-outline-secondary">
-                                    Share
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-outline-secondary">
-                                    Export
-                                </button>
-                            </div>
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                                <svg class="bi">
-                                    <use xlink:href="#calendar3" />
-                                </svg>
-                                This week
-                            </button>
+                            <form
+                                class="btn-toolbar mb-2 mb-md-0"
+                                action="/"
+                                method="post">
+                                <select
+                                    style="width: 220px"
+                                    class="form-select btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1 me-2"
+                                    aria-label="Default select example"
+                                    name="GlobalOrCountry">
+                                    <option>Global</option>
+                                    <option>Country</option>
+                                </select>
+                            </form>
                         </div>
                     </div>
 
@@ -249,130 +215,49 @@
                         width="900"
                         height="380"></canvas>
 
-                    <h2>Section title</h2>
+                    <h2>Country Population</h2>
                     <div class="table-responsive small">
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Header</th>
-                                    <th scope="col">Header</th>
-                                    <th scope="col">Header</th>
-                                    <th scope="col">Header</th>
+                                    <th scope="col">Year</th>
+                                    <th scope="col">Average Temp</th>
+                                    <th scope="col">Minimum Temperature</th>
+                                    <th scope="col">Maximum Temperature</th>
+                                    <th scope="col">
+                                        Land Ocean Average Temperature
+                                    </th>
+                                    <th scope="col">
+                                        Land Ocean Minimum Temperature
+                                    </th>
+                                    <th scope="col">
+                                        Land Ocean Maximum Temperature
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1,001</td>
-                                    <td>random</td>
-                                    <td>data</td>
-                                    <td>placeholder</td>
-                                    <td>text</td>
-                                </tr>
-                                <tr>
-                                    <td>1,002</td>
-                                    <td>placeholder</td>
-                                    <td>irrelevant</td>
-                                    <td>visual</td>
-                                    <td>layout</td>
-                                </tr>
-                                <tr>
-                                    <td>1,003</td>
-                                    <td>data</td>
-                                    <td>rich</td>
-                                    <td>dashboard</td>
-                                    <td>tabular</td>
-                                </tr>
-                                <tr>
-                                    <td>1,003</td>
-                                    <td>information</td>
-                                    <td>placeholder</td>
-                                    <td>illustrative</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr>
-                                    <td>1,004</td>
-                                    <td>text</td>
-                                    <td>random</td>
-                                    <td>layout</td>
-                                    <td>dashboard</td>
-                                </tr>
-                                <tr>
-                                    <td>1,005</td>
-                                    <td>dashboard</td>
-                                    <td>irrelevant</td>
-                                    <td>text</td>
-                                    <td>placeholder</td>
-                                </tr>
-                                <tr>
-                                    <td>1,006</td>
-                                    <td>dashboard</td>
-                                    <td>illustrative</td>
-                                    <td>rich</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr>
-                                    <td>1,007</td>
-                                    <td>placeholder</td>
-                                    <td>tabular</td>
-                                    <td>information</td>
-                                    <td>irrelevant</td>
-                                </tr>
-                                <tr>
-                                    <td>1,008</td>
-                                    <td>random</td>
-                                    <td>data</td>
-                                    <td>placeholder</td>
-                                    <td>text</td>
-                                </tr>
-                                <tr>
-                                    <td>1,009</td>
-                                    <td>placeholder</td>
-                                    <td>irrelevant</td>
-                                    <td>visual</td>
-                                    <td>layout</td>
-                                </tr>
-                                <tr>
-                                    <td>1,010</td>
-                                    <td>data</td>
-                                    <td>rich</td>
-                                    <td>dashboard</td>
-                                    <td>tabular</td>
-                                </tr>
-                                <tr>
-                                    <td>1,011</td>
-                                    <td>information</td>
-                                    <td>placeholder</td>
-                                    <td>illustrative</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr>
-                                    <td>1,012</td>
-                                    <td>text</td>
-                                    <td>placeholder</td>
-                                    <td>layout</td>
-                                    <td>dashboard</td>
-                                </tr>
-                                <tr>
-                                    <td>1,013</td>
-                                    <td>dashboard</td>
-                                    <td>irrelevant</td>
-                                    <td>text</td>
-                                    <td>visual</td>
-                                </tr>
-                                <tr>
-                                    <td>1,014</td>
-                                    <td>dashboard</td>
-                                    <td>illustrative</td>
-                                    <td>rich</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr>
-                                    <td>1,015</td>
-                                    <td>random</td>
-                                    <td>tabular</td>
-                                    <td>information</td>
-                                    <td>text</td>
+                                <tr th:each="year : ${GlobalYearlyTemp}">
+                                    <td
+                                        class="text-center"
+                                        th:text="${year.getYear()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${year.getAverageTemp()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${year.getMinTemp()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${year.getMaxTemp()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${year.getLandOceanAverageTemp()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${year.getLandOceanMinTemp()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${year.getLandOceanMaxTemp()}"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1098,155 +983,6 @@
         </main>
 
         <footer></footer>
-        <!-- Level 1: Landing Page -->
-        <!-- TODO: Display dynamic information from the database -->
-        <!--<section class="landing-page">
-        <h1>Welcome to Ocean and Land Temperature Analysis</h1>
-        <p>Explore temperature patterns over a 260-year period from 1750 - 2013</p>
-        <div class="data-summary">
-            <p>Year Range: <span id="year-range">1750 - 2013</span></p>
-            <p>World Population: <span id="world-population"></span></p>
-            <p>World Temperature: <span id="world-temperature"></span></p>
-            <p>Total Years of Data: <span id="total-years"></span></p>
-        </div>
-    </section>-->
-
-        <!-- Level 1: Big Picture content-->
-        <!-- TODO: Display dynamic information from the database -->
-        <!-- TODO: Display team members' information from the database -->
-
-        <!-- <section class="level1">
-        <h2>Big Picture content</h2>
-        <p>We aim to provide a comprehensive analysis of ocean and land temperatures, aiding governments, scientists, and the public in understanding climate change patterns.</p>
-
-        <p>Our site can be used to:</p>
-        <ul>
-            <li>Explore high-level concepts of temperature changes</li>
-            <li>Conduct in-depth analysis of temperature data</li>
-        </ul>
-
-        <p>Personas Targeted:</p>
-        <ul>
-            <li>Government Officials</li>
-            <li>Scientists and Researchers</li>
-            <li>General Public</li>
-        </ul>
-
-        <p>Team Members (NEED to update to take from the database):</p>
-            <ul id="team-members">
-                <li>Pham Hoang Duong - s3818206</li>
-                <li>Duong Khoi Nguyen - s4000770</li>
-                <li>Phan Huu Phuoc - s4035378</li>
-                <li>Tran Viet Anh - s4071165</li>
-                <li>Nguyen Nhat Anh - s4029795</li>
-            </ul>
-    </section> -->
-
-        <!-- Level 2: Shallow Glance of the Data -->
-        <!-- <section class="level2">
-        <h2>Shallow Glance of the Data</h2>
-        <div class="subtaskA">
-            <h3>Focused view of temperature and population change by Country/Global</h3>
-            <form id="subtaskA-form">
-                <label for="view-type">View by:</label>
-                <select id="view-type" name="view-type">
-                    <option value="countries">Countries</option>
-                    <option value="world">World</option>
-                </select>
-
-                <label for="start-year">Start Year:</label>
-                <input type="number" id="start-year" name="start-year" min="1750" max="2013">
-
-                <label for="end-year">End Year:</label>
-                <input type="number" id="end-year" name="end-year" min="1750" max="2013">
-
-                <label for="sort-by">Sort by:</label>
-                <select id="sort-by" name="sort-by">
-                    <option value="temperature">Temperature</option>
-                    <option value="population">Population</option>
-                </select>
-
-                <label for="sort-order">Sort order:</label>
-                <select id="sort-order" name="sort-order">
-                    <option value="asc">Ascending</option>
-                    <option value="desc">Descending</option>
-                </select>
-
-                <button type="button" onclick="fetchSubtaskAData()">Submit</button>
-            </form>
-
-            <div id="subtaskA-results">
-            </div>
-        </div>
-
-        <div class="subtaskB">
-            <h3>Focused view of temperature change by City/State</h3>
-            <form id="subtaskB-form">
-                <label for="country">Choose a Country:</label>
-                <select id="country" name="country">
-                </select>
-
-                <label for="start-year-b">Start Year:</label>
-                <input type="number" id="start-year-b" name="start-year-b" min="1750" max="2013">
-
-                <label for="end-year-b">End Year:</label>
-                <input type="number" id="end-year-b" name="end-year-b" min="1750" max="2013">
-
-                <label for="view-type-b">View by:</label>
-                <select id="view-type-b" name="view-type-b">
-                    <option value="cities">Cities</option>
-                    <option value="states">States</option>
-                </select>
-
-                <button type="button" onclick="fetchSubtaskBData()">Submit</button>
-            </form>
-
-            <div id="subtaskB-results">
-            </div>
-        </div>
-    </section> -->
-
-        <!-- Level 3: Deep-dive of the Data -->
-        <!-- <section class="level3">
-        <h2>Deep-dive of the Data</h2>
-
-        <div class="subtaskA">
-            <h3>Identify changes in temperature over extended periods</h3>
-            <form id="subtaskA-form">
-                <label for="startYearA">Starting Year:</label>
-                <input type="text" id="startYearA" name="startYearA">
-                
-                <label for="timePeriodA">Time Period (years):</label>
-                <input type="text" id="timePeriodA" name="timePeriodA">
-                
-                <label for="regionA">Geographic Region:</label>
-                <select id="regionA" name="regionA"></select>
-                
-                <button type="button" onclick="submitFormA()">Submit</button>
-            </form>
-            <div id="subtaskA-results">
-            </div>
-        </div>
-
-        <div class="subtaskB">
-            <h3>Finding time periods with similar temperature and/or population</h3>
-            <form id="subtaskB-form">
-                <label for="startYearB">Starting Year:</label>
-                <input type="text" id="startYearB" name="startYearB">
-                
-                <label for="timePeriodB">Time Period (years):</label>
-                <input type="text" id="timePeriodB" name="timePeriodB">
-                
-                <label for="regionB">Geographic Region:</label>
-                <select id="regionB" name="regionB">
-                </select>
-                <button type="button" onclick="submitFormB()">Submit</button>
-            </form>
-            <div id="subtaskB-results">
-            </div>
-        </div>
-    </section> -->
-
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -1291,6 +1027,6 @@
                 });
             })();
         </script>
-        <!-- <script type="text/javascript" inline="javascript" th:src="@{/index.js}"></script> -->
+        <script th:src="index.js"></script>
     </body>
 </html>

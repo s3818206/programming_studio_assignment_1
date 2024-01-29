@@ -38,6 +38,8 @@ public class App {
      
 
         // POST pages can accept form data
+        app.post("/", new PageIndex());
+        app.post("/dashboard", new PageDashboard());
         app.post("/contact", new PageContact());
     }
 }

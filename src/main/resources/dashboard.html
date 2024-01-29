@@ -1,44 +1,413 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Climate Change Awareness</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid d-flex flex-row justify-content-between align-items-center">
-            <a class="navbar-brand ms-5 fs-3" href="/">Climate Insight</a>
-            <ul class="navbar-nav mb-lg-0">
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/about-us">About Us</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/news">News</a>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link fs-5" href="/contact">Contact</a>
-                </li>
-            </ul> 
-            <!-- TODO: Seaching functionality may change based GET and POST  requests -->
-            <form class="d-flex me-5" role="search">
-                <input class="form-control me-2 fs-5" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success fs-5" type="submit">Search</button>
-            </form>
+<html
+    lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Climate Change Awareness</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar"></nav>
+        <div class="container">
+            <h1 class="pt-3 pb-2 mb-3 border-bottom">
+                Temperature and Population by Country/Global
+            </h1>
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                <h3 th:text="${selectedTemperatureOrPopulation}"></h3>
+                <div
+                    class="d-flex justify-content-center flex-wrap align-items-center">
+                    <form
+                        class="btn-toolbar mb-2 mb-md-0"
+                        action="/dashboard"
+                        method="post"
+                        id="myForm">
+                        <p class="my-auto me-2">View</p>
+                        <select
+                            style="width: 150px"
+                            le
+                            class="form-select btn-sm dropdown-toggle d-flex align-items-center gap-1 me-2"
+                            name="TemperatureOrPopulation"
+                            onChange="submitForm()">
+                            <option
+                                th:each="type : ${TemperatureOrPopulation}"
+                                th:selected="${type==selectedTemperatureOrPopulation}"
+                                th:text="${type}"></option>
+                        </select>
+                        <p class="my-auto me-2">From</p>
+                        <select
+                            style="width: 110px"
+                            class="form-select btn-sm dropdown-toggle d-flex align-items-center gap-1 me-2"
+                            name="CountryOrGlobal"
+                            onChange="submitForm()">
+                            <option
+                                th:each="type : ${CountryOrGlobal}"
+                                th:selected="${type == selectedCountryOrGlobal}"
+                                th:text="${type}"></option>
+                        </select>
+                        <select
+                            style="width: 100px"
+                            th:if="${selectedCountryOrGlobal == 'Country'}"
+                            class="form-select btn-sm dropdown-toggle d-flex align-items-center gap-1 me-2"
+                            onChange="submitForm()"
+                            name="Country">
+                            <option
+                                th:each="country : ${countries}"
+                                th:selected="${country == selectedCountry}"
+                                th:text="${country}"></option>
+                        </select>
+                        <p class="my-auto me-2">From</p>
+                        <select
+                            style="width: 120px"
+                            class="form-select btn-sm dropdown-toggle d-flex align-items-center gap-1 me-2"
+                            name="StartYear">
+                            <option
+                                th:each="startYear : ${startYears}"
+                                th:text="${startYear}"></option>
+                        </select>
+                        <p class="mx-auto my-auto me-2">To</p>
+                        <select
+                            style="width: 120px"
+                            class="form-select btn-sm dropdown-toggle d-flex align-items-center gap-1 me-2"
+                            name="EndYear">
+                            <option
+                                th:each="endYear : ${endYears}"
+                                th:text="${endYear}"></option>
+                        </select>
+                        <button class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dashboard here -->
+            <!-- <canvas
+                class="my-4 w-100"
+                th:value="${worldPopulation}"
+                id="myChart"
+                width="900"
+                height="380"></canvas> -->
+            <div
+                th:if="${selectedTemperatureOrPopulation == 'Population' and selectedCountryOrGlobal == 'Global'}"
+                class="table-responsive small">
+                <canvas
+                    class="my-4 w-100"
+                    id="GlobalPopulationChart"
+                    width="900"
+                    height="380"></canvas>
+
+                <table
+                    style="width: 100%"
+                    class="table table-striped table-sm table-hover">
+                    <tr>
+                        <th class="text-center">Name</th>
+                        <td
+                            class="text-center"
+                            th:text="${GlobalPopulation.countryName}"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Code</th>
+                        <td
+                            class="text-center"
+                            th:text="${GlobalPopulation.countryCode}"></td>
+                    </tr>
+                    <!-- Previous rows... -->
+                    <tr
+                        th:each="i : ${#numbers.sequence(0, globalYears.size() - 1)}">
+                        <th
+                            class="text-center"
+                            th:text="${globalYears[i]}"></th>
+                        <td
+                            class="text-center"
+                            th:text="${globalPopulations[i]}"></td>
+                    </tr>
+                    <!-- Subsequent rows... -->
+                </table>
+            </div>
+            <div
+                th:if="${selectedTemperatureOrPopulation == 'Population' and selectedCountryOrGlobal == 'Country'}"
+                class="table-responsive small">
+                <canvas
+                    class="my-4 w-100"
+                    id="CountryPopulationChart"
+                    width="900"
+                    height="380"></canvas>
+                <table
+                    style="width: 100%"
+                    class="table table-striped table-sm table-hover">
+                    <tr>
+                        <th class="text-center">Country Name</th>
+                        <td
+                            class="text-center"
+                            th:text="${CountryPopulation.countryName}"></td>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Country Code</th>
+                        <td
+                            class="text-center"
+                            th:text="${CountryPopulation.countryCode}"></td>
+                    </tr>
+                    <tr
+                        th:each="i : ${#numbers.sequence(0, countryYears.size() - 1)}">
+                        <th
+                            class="text-center"
+                            th:text="${countryYears[i]}"></th>
+                        <td
+                            class="text-center"
+                            th:text="${countryPopulations[i]}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div
+                th:if="${selectedTemperatureOrPopulation == 'Temperature' and selectedCountryOrGlobal == 'Global'}"
+                class="table-responsive small">
+                <canvas
+                    class="my-4 w-100"
+                    id="GlobalTemperatureChart"
+                    width="900"
+                    height="380"></canvas>
+                <table class="table table-striped table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center" scope="col">Year</th>
+                            <th class="text-center" scope="col">
+                                Average Temp
+                            </th>
+                            <th class="text-center" scope="col">
+                                Minimum Temperature
+                            </th>
+                            <th class="text-center" scope="col">
+                                Maximum Temperature
+                            </th>
+                            <th class="text-center" scope="col">
+                                Land Ocean Average Temperature
+                            </th>
+                            <th class="text-center" scope="col">
+                                Land Ocean Minimum Temperature
+                            </th>
+                            <th class="text-center" scope="col">
+                                Land Ocean Maximum Temperature
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="temp : ${GlobalTemps}">
+                            <td
+                                class="text-center"
+                                th:text="${temp.getYear()}"></td>
+                            <td
+                                class="text-center"
+                                th:text="${temp.getAverageTemp()}"></td>
+                            <td
+                                class="text-center"
+                                th:text="${temp.getMinTemp()}"></td>
+                            <td
+                                class="text-center"
+                                th:text="${temp.getMaxTemp()}"></td>
+                            <td
+                                class="text-center"
+                                th:text="${temp.getLandOceanAverageTemp()}"></td>
+                            <td
+                                class="text-center"
+                                th:text="${temp.getLandOceanMinTemp()}"></td>
+                            <td
+                                class="text-center"
+                                th:text="${temp.getLandOceanMaxTemp()}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </nav>    
+        <!-- Work above this code -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script th:inline="javascript">
+            var countryPopulation = [[${CountryPopulation}]];  // Replace with the actual object for the selected country
+            var countryYears = [[${countryYears}]];  // Replace with the years for the selected country
+            var countryPopulations = [[${countryPopulations}]];  // Replace with the population data for the selected country
 
+            if (countryPopulation && countryYears && countryPopulations) {
+                (() => {
+                    'use strict';
+                    // Graphs
+                    const ctx = document.getElementById('CountryPopulationChart');
+                    const myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: countryYears,
+                            datasets: [
+                                {
+                                    data: countryPopulations,
+                                    label: 'Country Population',
+                                    lineTension: 0,
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'blue',  // Change the border color as needed
+                                    borderWidth: 6,
+                                    pointBackgroundColor: '#blue',  // Change the point color as needed
+                                },
+                            ],
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                },
+                                tooltip: {
+                                    boxPadding: 3,
+                                },
+                            },
+                        },
+                    });
+                })();
+            }
+        </script>
+        <script th:inline="javascript">
+            var globalPopulation = [[${GlobalPopulation}]];  // Replace with the actual object for global population
+            var globalYears = [[${globalYears}]];  // Replace with the years for global population
+            var globalPopulations = [[${globalPopulations}]];  // Replace with the global population data
 
-    <!-- TODO: Work on the body of this page -->
-    <div>
+            if (globalPopulation && globalYears && globalPopulations) {
+                (() => {
+                    'use strict';
+                    // Graphs
+                    const ctx = document.getElementById('GlobalPopulationChart');
+                    const myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: globalYears,
+                            datasets: [
+                                {
+                                    data: globalPopulations,
+                                    label: 'Global Population',
+                                    lineTension: 0,
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'red',  // Change the border color as needed
+                                    borderWidth: 6,
+                                    pointBackgroundColor: '#red',  // Change the point color as needed
+                                },
+                            ],
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                },
+                                tooltip: {
+                                    boxPadding: 3,
+                                },
+                            },
+                        },
+                    });
+                })();
+            }
+        </script>
+        <script th:inline="javascript">
+            var globalTemperatureYear = [[${GlobalTemperatureYear}]];
+            var globalAverageTemp = [[${globalAverageTemp}]];
+            var globalMinTemp = [[${globalMinTemp}]];
+            var globalMaxTemp = [[${globalMaxTemp}]];
+            var globalLandOceanAverageTemp = [[${globalLandOceanAverageTemp}]];
+            var globalLandOceanMinTemp = [[${globalLandOceanMinTemp}]];
+            var globalLandOceanMaxTemp = [[${globalLandOceanMaxTemp}]];
 
-    </div>
+            if (globalTemperatureYear && globalAverageTemp && globalMinTemp && globalMaxTemp &&
+                globalLandOceanAverageTemp && globalLandOceanMinTemp && globalLandOceanMaxTemp) {
+                (() => {
+                    'use strict';
+                    // Graphs
+                    const ctx = document.getElementById('GlobalTemperatureChart');
+                    const myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: globalTemperatureYear,
+                            datasets: [
+                                {
+                                    data: globalAverageTemp,
+                                    label: 'Average Temp',
+                                    lineTension: 0,
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'red',
+                                    borderWidth: 2,
+                                    pointBackgroundColor: 'red',
+                                },
+                                {
+                                    data: globalMinTemp,
+                                    label: 'Minimum Temperature',
+                                    lineTension: 0,
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'blue',
+                                    borderWidth: 2,
+                                    pointBackgroundColor: 'blue',
+                                },
+                                {
+                                    data: globalMaxTemp,
+                                    label: 'Maximum Temperature',
+                                    lineTension: 0,
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'green',
+                                    borderWidth: 2,
+                                    pointBackgroundColor: 'green',
+                                },
+                                {
+                                    data: globalLandOceanAverageTemp,
+                                    label: 'Land Ocean Average Temperature',
+                                    lineTension: 0,
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'orange',
+                                    borderWidth: 2,
+                                    pointBackgroundColor: 'orange',
+                                },
+                                {
+                                    data: globalLandOceanMinTemp,
+                                    label: 'Land Ocean Minimum Temperature',
+                                    lineTension: 0,
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'purple',
+                                    borderWidth: 2,
+                                    pointBackgroundColor: 'purple',
+                                },
+                                {
+                                    data: globalLandOceanMaxTemp,
+                                    label: 'Land Ocean Maximum Temperature',
+                                    lineTension: 0,
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'brown',
+                                    borderWidth: 2,
+                                    pointBackgroundColor: 'brown',
+                                },
+                            ],
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                },
+                                tooltip: {
+                                    boxPadding: 3,
+                                },
+                            },
+                        },
+                    });
+                })();
+            }
+        </script>
 
-</body>
+        <script>
+            let submitForm = () => {
+                document.getElementById('myForm').submit();
+            };
+        </script>
+        <script src="index.js"></script>
+    </body>
 </html>

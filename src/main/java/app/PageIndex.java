@@ -18,25 +18,24 @@ public class PageIndex implements Handler  {
 
         JDBCConnection jdbc = new JDBCConnection();
 
-        long worldPopulation = jdbc.getWorldPopulation_2013();  
-        NumberFormat numberFormat = NumberFormat.getNumberInstance();
-        String formattedPopulation = numberFormat.format(worldPopulation);
-        model.put("worldPopulation_2013", formattedPopulation); 
+
         
-        ArrayList<WorldPopulation> worldPopulations = jdbc.getWorldPopulation();
-        model.put("worldPopulation", worldPopulations);
+        // ArrayList<WorldPopulation> worldPopulations = jdbc.getGlobalPopulation();
     
         // TODO: Your work for Thymeleaf and JDBC
         ArrayList<String> Year = new ArrayList<String>();
         ArrayList<Long> WorldPopulationlist = new ArrayList<Long>();
-        for (WorldPopulation oneWorldPopulation : worldPopulations){
-            Year.add(oneWorldPopulation.getYear());
-            WorldPopulationlist.add(oneWorldPopulation.getPopulation());
-        }
+     
 
         model.put("year", Year);
         model.put("worldPopulation", WorldPopulationlist);
         
+
+        // ArrayList<GlobalTemp> GlobalYearlyTempList = jdbc.getGlobalTemp();
+        // model.put("GlobalYearlyTemp", GlobalYearlyTempList);
+
+
+
 
         // No code below this
         context.render(TEMPLATE, model);
