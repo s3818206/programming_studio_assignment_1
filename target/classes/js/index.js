@@ -27,3 +27,19 @@ document.getElementById('navbar').innerHTML = `<div
             </button>
         </form>
         </div>`;
+
+        // TODO: Work on dashboard sidebar and make it on the left
+// document.getElementById('dashboardSidebar').innerHTML = ''
+
+/* global bootstrap: false */
+(() => {
+    'use strict';
+    const tooltipTriggerList = Array.from(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+    );
+    tooltipTriggerList.forEach((tooltipTriggerEl) => {
+        new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+})();
+
+

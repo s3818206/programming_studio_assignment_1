@@ -60,7 +60,15 @@ public class PageDashboard implements Handler  {
         String selectedCountry = context.formParam("Country");
         model.put("selectedCountry", selectedCountry);
 
+        ArrayList<String> cities = jdbc.getCityList(selectedCountry);
+        model.put("cities", cities);
+        ArrayList<String> states = jdbc.getStateList(selectedCountry);
+        model.put("states", states);
 
+        String selectedCity = context.formParam("City");
+        model.put("selectedCity", selectedCity);
+        String selectedState = context.formParam("State");
+        model.put("selectedState", selectedState);
     
         String startYear = context.formParam("StartYear");
         String endYear = context.formParam("EndYear");         
@@ -101,7 +109,6 @@ public class PageDashboard implements Handler  {
                 model.put("globalLandOceanAverageTemp", globalLandOceanAverageTemp);
                 model.put("globalLandOceanMinTemp", globalLandOceanMinTemp);
                 model.put("globalLandOceanMaxTemp", globalLandOceanMaxTemp);
-
             } else if (selectedCountryOrGlobal.equals("Country") && selectedTemperatureOrPopulation.equals("Population")){
                 Population countryPopulation = jdbc.getPopulation(selectedCountry, intStartYear, intEndYear);
                 System.out.println(countryPopulation.getCountryName());
@@ -117,7 +124,17 @@ public class PageDashboard implements Handler  {
                 model.put("countryYears", years);
                 model.put("countryPopulations", populations);
             } else if (selectedCountryOrGlobal.equals("Country") && selectedTemperatureOrPopulation.equals("Temperature")){
-                // TODO: Country Temperature too
+                ArrayList<Temperature> countryTemperatures = jdbc.getCountryTemp(selectedCountry, intStartYear, intEndYear);
+                model.put("CountryTemperatures", countryTemperatures);
+                List<Integer> countryTemperatureYear = countryTemperatures.stream().map(Temperature::getYear).collect(Collectors.toList());
+                List<Double> countryAverageTemp = countryTemperatures.stream().map(Temperature::getAverageTemp).collect(Collectors.toList());
+                List<Double> countryMinTemp = countryTemperatures.stream().map(Temperature::getMinTemp).collect(Collectors.toList());
+                List<Double> countryMaxTemp = countryTemperatures.stream().map(Temperature::getMaxTemp).collect(Collectors.toList());
+
+                model.put("CountryTemperatureYear", countryTemperatureYear);
+                model.put("countryAverageTemp", countryAverageTemp);
+                model.put("countryMinTemp", countryMinTemp);
+                model.put("countryMaxTemp", countryMaxTemp);
             }
         } catch (NumberFormatException e) {
             System.out.println("Error converting to integer: " + e.getMessage());

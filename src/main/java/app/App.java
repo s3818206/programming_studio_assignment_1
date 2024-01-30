@@ -32,6 +32,10 @@ public class App {
         app.get("/", new PageIndex());
         app.get("/about-us", new PageAboutUs());
         app.get("/dashboard", new PageDashboard());
+        app.get("/dashboard/s2b", new PageDashboard_s2b());
+        app.get("/dashboard/s3a", new PageDashboard_s3a());
+        app.get("/dashboard/s3b", new PageDashboard_s3b());
+
         app.get("/news", new PageNews());
         app.get("/contact", new PageContact());
         
@@ -40,6 +44,9 @@ public class App {
         // POST pages can accept form data
         app.post("/", new PageIndex());
         app.post("/dashboard", new PageDashboard());
+        app.post("/dashboard/s2b", new PageDashboard_s2b());
+        app.post("/dashboard/s3a", new PageDashboard_s3a());
+        app.post("/dashboard/s3b", new PageDashboard_s3b());
         app.post("/contact", new PageContact());
     }
 }

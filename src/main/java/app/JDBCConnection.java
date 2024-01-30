@@ -79,6 +79,62 @@ public class JDBCConnection {
         return CountryList;
     }
 
+    public ArrayList<String> getCityList(String country){
+        ArrayList<String> cityList = new ArrayList<String>();
+        Connection connection = null; 
+        try {
+            connection = DriverManager.getConnection(DATASET_DATABASE);
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            String query= "SELECT City FROM GlobalYearlyLandTempByCity WHERE Country = '" + country + "'";
+            ResultSet results = statement.executeQuery(query);
+            while(results.next()){
+                cityList.add(results.getString("City"));
+            }
+            return cityList; 
+        } catch (SQLException error ) {
+            System.err.println(error.getMessage());
+        } finally { 
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException error) {
+                System.err.println(error.getMessage());
+            }
+        }
+        return cityList;
+    }
+
+    public ArrayList<String> getStateList(String country){
+        ArrayList<String> stateList = new ArrayList<String>();
+        Connection connection = null; 
+        try {
+            connection = DriverManager.getConnection(DATASET_DATABASE);
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            String query= "SELECT State FROM GlobalYearlyLandTempByState WHERE Country = '" + country + "'";
+            ResultSet results = statement.executeQuery(query);
+            while(results.next()){
+                stateList.add(results.getString("State"));
+            }
+            return stateList; 
+        } catch (SQLException error ) {
+            System.err.println(error.getMessage());
+        } finally { 
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException error) {
+                System.err.println(error.getMessage());
+            }
+        }
+        return stateList;
+    }
+
     public Population getPopulation(String country, int startYear, int endYear ){
         Population population = new Population(); 
         Connection connection = null; 
@@ -170,9 +226,39 @@ public class JDBCConnection {
         return globalYearlyTemps;
     }
 
-    
 
-    public ArrayList<Temperature>  getCountryTemperature(String country, int startYear, int endYear){
-        return null; 
+    public ArrayList<Temperature>  getCountryTemp(String country, int startYear, int endYear){
+        ArrayList<Temperature> countryTemperatures = new ArrayList<Temperature>();
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(DATASET_DATABASE);
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            String query = "SELECT * FROM GlobalYearlyLandTempByCountry WHERE (Year BETWEEN " + startYear + " AND " + endYear + ") AND Country = '" + country + "'";
+            ResultSet results = statement.executeQuery(query);
+            while(results.next()){
+                Temperature newCountryTemperature = new Temperature(); 
+                newCountryTemperature.setYear(results.getInt("Year"));
+                newCountryTemperature.setAverageTemp(results.getDouble("AverageTemperature"));
+                newCountryTemperature.setMinTemp(results.getDouble("MinimumTemperature"));
+                newCountryTemperature.setMaxTemp(results.getDouble("MaximumTemperature"));
+                countryTemperatures.add(newCountryTemperature);
+            }
+            return countryTemperatures;
+        } catch (SQLException error ) {
+            System.err.println(error.getMessage());
+        } finally { 
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException error) {
+                System.err.println(error.getMessage());
+            }
+        }
+        return countryTemperatures;
     }
+    
 }
