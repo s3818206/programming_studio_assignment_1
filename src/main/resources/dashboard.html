@@ -20,76 +20,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div
-                    class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary vh-100">
-                    <div class="flex-shrink-0 p-3" style="width: 280px">
-                        <ul class="list-unstyled ps-0">
-                            <li class="mb-1">
-                                <button
-                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#home-collapse"
-                                    aria-expanded="true">
-                                    <h4>Shallow-Glance Data</h4>
-                                </button>
-                                <div class="collapse show" id="home-collapse">
-                                    <ul
-                                        class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li>
-                                            <a
-                                                href="/"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Temperature and Population
-                                                changed by Country/Global
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Temperature changed by
-                                                City/State
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-1">
-                                <button
-                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#dashboard-collapse"
-                                    aria-expanded="false">
-                                    <h4>Deep-dive Data</h4>
-                                </button>
-                                <div class="collapse" id="dashboard-collapse">
-                                    <ul
-                                        class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li>
-                                            <a
-                                                href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Temperature Change over Extended
-                                                Periods
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Finding Time Periods with
-                                                Similar Temperature and/or
-                                                Population
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                    class="sidebar border border-right col-md-3 col-lg-2 p-0 vh-100"
+                    id="dashboardSidebar"></div>
                 <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <h1 class="pt-3 pb-2 mb-3 border-bottom">
-                        Shallow Glance of the data
+                        Temperature, Population changed by Country/Global
                     </h1>
                     <div
                         class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
@@ -323,7 +258,9 @@
                             id="CountryTemperatureChart"
                             width="900"
                             height="380"></canvas>
-                        <table class="table table-striped table-sm table-hover">
+                        <table
+                            class="table table-striped table-sm table-hover"
+                            id="Country">
                             <thead>
                                 <tr>
                                     <th class="text-center" scope="col">
@@ -409,11 +346,10 @@
             }
         </script>
         <script th:inline="javascript">
-            var globalPopulation = [[${GlobalPopulation}]];  // Replace with the actual object for global population
-            var globalYears = [[${globalYears}]];  // Replace with the years for global population
-            var globalPopulations = ${globalPopulations};  // Replace with the global population data
+            var globalYears = [[${globalYears}]];
+            var globalPopulations = [[${globalPopulations}]];
 
-            if (globalPopulation && globalYears && globalPopulations) {
+            if (globalYears && globalPopulations) {
                 (() => {
                     'use strict';
                     // Graphs
@@ -602,7 +538,23 @@
             let submitForm = () => {
                 document.getElementById('myForm').submit();
             };
+            $(document).ready(function () {
+                $('#globalTemperatureDataTable').DataTable({
+                    columnDefs: [
+                        { targets: [0, 1, 2, 3, 4, 5, 6], orderable: true },
+                    ],
+                    dom: '<"row justify-content-center align-items-center"<"col-sm-12 text-center"lf>>tip',
+                });
+            });
+
+            $(document).ready(function () {
+                $('#Country').DataTable({
+                    columnDefs: [{ targets: [0, 1, 2, 3], orderable: true }],
+                    dom: '<"row justify-content-center align-items-center"<"col-sm-12 text-center"lf>>tip',
+                });
+            });
         </script>
+        <script></script>
         <script src="index.js"></script>
     </body>
 </html>

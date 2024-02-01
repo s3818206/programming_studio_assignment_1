@@ -16,6 +16,8 @@ import java.sql.Statement;
 public class JDBCConnection {
     private static final String MEMBER_DATABASE = "jdbc:sqlite:database/member.db";
     private static final String DATASET_DATABASE = "jdbc:sqlite:database/dataSet.db";
+    private static final String PERSONA_DATABASE = "jdbc:sqlite:database/personas.db";
+
 
     public ArrayList<Member> getMembers() {
         ArrayList<Member> members = new ArrayList<Member>();
@@ -49,6 +51,48 @@ public class JDBCConnection {
             }
         }
         return members;
+    }
+
+    public ArrayList<Persona> getPersona(){
+        ArrayList<Persona> personas = new ArrayList<Persona>();
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(MEMBER_DATABASE);
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30); 
+
+            String query = "SELECT * FROM Personas";
+            ResultSet results = statement.executeQuery(query);
+
+            while (results.next()) {
+                Persona persona = new Persona();
+                persona.setName(results.getString("name"));
+                persona.setQuote(results.getString("quote"));
+                persona.setDescription(results.getString("description"));
+                persona.setAttributeAge(results.getInt("attribute_age"));
+                persona.setAttributeGender(results.getString("attribute_gender"));
+                persona.setAttributeEthnicity(results.getString("attribute_ethnicity"));
+                persona.setBackground(results.getString("background"));
+                persona.setNeeds(results.getString("needs"));
+                persona.setGoals(results.getString("goals"));
+                persona.setSkillsExperience(results.getString("skills_experience"));
+                persona.setImageLink(results.getString("image_link"));
+                personas.add(persona);
+            }
+            return personas;
+        } catch (SQLException error ) {
+            System.err.println(error.getMessage());
+        } finally { 
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException error) {
+                System.err.println(error.getMessage());
+            }
+        }
+        return personas;
     }
     
     public ArrayList<String> getCountryList(){
@@ -235,8 +279,8 @@ public class JDBCConnection {
             connection = DriverManager.getConnection(DATASET_DATABASE);
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
-
-            String query = "SELECT * FROM GlobalYearlyLandTempByCountry WHERE (Year BETWEEN " + startYear + " AND " + endYear + ") AND Country = '" + country + "'";
+(Year BETWEEN " + startYear + " AND " + endYear + ") AND Country = '" + country + "'"
+            String query = "SELECT * FROM GlobalYearlyLandTempByCountry WHERE ;
             ResultSet results = statement.executeQuery(query);
             while(results.next()){
                 Temperature newCountryTemperature = new Temperature(); 
@@ -244,6 +288,7 @@ public class JDBCConnection {
                 newCountryTemperature.setAverageTemp(results.getDouble("AverageTemperature"));
                 newCountryTemperature.setMinTemp(results.getDouble("MinimumTemperature"));
                 newCountryTemperature.setMaxTemp(results.getDouble("MaximumTemperature"));
+                System.out.println(newCountryTemperature);
                 countryTemperatures.add(newCountryTemperature);
             }
             return countryTemperatures;
@@ -260,5 +305,79 @@ public class JDBCConnection {
         }
         return countryTemperatures;
     }
-    
+
+    public void submitAverageTemp(String region, int startYear, int yearRange){
+        double averageTemp=0; 
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(DATASET_DATABASE);
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+            String query="";
+            if(region.equals("Global")){
+                query = "SELECT AVG(AverageTemperature) FROM GlobalYearlyTemp WHERE Year BETWEEN " + startYear + " AND " + (startYear + yearRange);
+            }else if(region.equals("Country")){
+                query = "SELECT AVG(AverageTemperature) FROM GlobalYearlyLandTempByCountry WHERE Year BETWEEN " + startYear + " AND " + (startYear + yearRange);
+            }else if(region.equals("City")){
+                query = "SELECT AVG(AverageTemperature) FROM GlobalYearlyLandTempByCity WHERE Year BETWEEN " + startYear + " AND " + (startYear + yearRange);
+            }else if(region.equals("State")){
+                query = "SELECT AVG(AverageTemperature) FROM GlobalYearlyLandTempByState WHERE Year BETWEEN " + startYear + " AND " + (startYear + yearRange);
+            }
+
+            ResultSet results = statement.executeQuery(query);
+            while(results.next()){
+               averageTemp = results.getDouble("AVG(AverageTemperature)");
+            }
+
+
+            query = "INSERT INTO AverageTempByRegion (Region, StartYear, YearRange, AverageTemp) VALUES ('" + region + "', " + startYear + ", " + yearRange + ", " + averageTemp + ")";
+            statement.executeUpdate(query);
+        } catch (SQLException error ) {
+            System.err.println(error.getMessage());
+        } finally { 
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException error) {
+                System.err.println(error.getMessage());
+            }
+        }
+    }
+
+    public ArrayList<AverageTempByRegion> getAverageTempByRegion(){
+        ArrayList<AverageTempByRegion> averageTempByRegions = new ArrayList<AverageTempByRegion>(); 
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(DATASET_DATABASE);
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+            String query="SELECT * FROM AverageTempByRegion";
+
+            ResultSet results = statement.executeQuery(query);
+            while(results.next()){
+                AverageTempByRegion averageTempByRegion = new AverageTempByRegion();
+                averageTempByRegion.setRegion(results.getString("Region"));
+                averageTempByRegion.setYear(results.getInt("StartYear"));
+                averageTempByRegion.setYearRange(results.getInt("YearRange"));  
+                averageTempByRegion.setAverageTemp(results.getDouble("AverageTemp"));
+                averageTempByRegions.add(averageTempByRegion);
+            }
+            return averageTempByRegions;
+
+        } catch (SQLException error ) {
+            System.err.println(error.getMessage());
+        } finally { 
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException error) {
+                System.err.println(error.getMessage());
+            }
+        }
+        return averageTempByRegions;
+    }
 }

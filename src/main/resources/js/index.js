@@ -28,6 +28,74 @@ document.getElementById('navbar').innerHTML = `<div
         </form>
         </div>`;
 
+document.getElementById(
+    'dashboardSidebar',
+).innerHTML = `<div class="flex-shrink-0 p-3">
+            <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+                    <button
+                        class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#home-collapse"
+                        aria-expanded="true">
+                        <h6>Shallow-Glance Data</h6>
+                    </button>
+                    <div class="collapse show" id="home-collapse">
+                        <ul
+                            class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li>
+                                <a
+                                    href="/dashboard"
+                                    class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                                    Temperature and Population
+                                    changed by Country/Global
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/dashboard_s2b"
+                                    class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                                    Temperature changed by
+                                    City/State
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button
+                        class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#dashboard-collapse"
+                        aria-expanded="false">
+                        <h6>Deep-dive Data</h6>
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul
+                            class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li>
+                                <a
+                                    href="/dashboard_s3a"
+                                    class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                                    Temperature Change over Extended
+                                    Periods
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/dashboard_s3b"
+                                    class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                                        Time Periods with
+                                    Similar Temperature and/or
+                                    Population
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>`;
+
 /* global bootstrap: false */
 (() => {
     'use strict';

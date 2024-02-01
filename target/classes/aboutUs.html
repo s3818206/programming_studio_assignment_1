@@ -16,7 +16,49 @@
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+        <link
+            rel="apple-touch-icon"
+            href="/docs/5.0/assets/img/favicons/apple-touch-icon.png"
+            sizes="180x180" />
+        <link
+            rel="icon"
+            href="/docs/5.0/assets/img/favicons/favicon-32x32.png"
+            sizes="32x32"
+            type="image/png" />
+        <link
+            rel="icon"
+            href="/docs/5.0/assets/img/favicons/favicon-16x16.png"
+            sizes="16x16"
+            type="image/png" />
+        <link
+            rel="manifest"
+            href="/docs/5.0/assets/img/favicons/manifest.json" />
+        <link
+            rel="mask-icon"
+            href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg"
+            color="#7952b3" />
+        <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico" />
+        <meta name="theme-color" content="#7952b3" />
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <style>
+            .featurette {
+                padding: 80px 0;
+            }
+
+            .featurette-divider {
+                margin: 3rem 0;
+            }
+
+            .featurette img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
+            .text-muted {
+                font-style: italic;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar"></nav>
@@ -160,18 +202,343 @@
             </div>
 
             <hr class="featurette-divider" />
-            <div>
+            <div class="container marketing">
                 <h1 class="w-100 text-center">Our Personas</h1>
                 <!-- TODO: Personas here, try to display the whole table, please only work in this div-->
+                <!-- aboutUs.html -->
 
+                <!-- <div
+                    th:each="persona, iterStat : ${Personas}"
+                    class="row featurette mt-2">
+                    <div class="col-md-7 mt-0">
+                        <h2
+                            class="featurette-heading"
+                            th:text="${persona.name + ' - ' + persona.quote}">
+               
+                        </h2>
+                        <p class="" th:text="${persona.description}">
+               
+                        </p>
+                        <p class="">
+                            <strong>Attribute</strong>
+                            <br />
+                            Age:
+                            <span th:text="${persona.attributeAge}"></span>
+                            <br />
+                            Gender:
+                            <span th:text="${persona.attributeGender}"></span>
+                            <br />
+                            Ethnicity:
+                            <span
+                                th:text="${persona.attributeEthnicity}"></span>
+                        </p>
+                        <p class="" th:text="${persona.background}"></p>
+                        <p class="" th:text="${persona.needs}"></p>
+                        <p class="" th:text="${persona.goals}"></p>
+                        <p
+                            class=""
+                            th:text="${persona.skillsExperience}"></p>
+                    </div>
+                    <div class="col-md-5">
+                        <img
+                            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            width="500"
+                            height="500"
+                            role="img"
+                            aria-label="Placeholder: 500x500"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false"
+                            th:src="${persona.imageLink}" />
+                    </div>
+                </div> -->
+                <!-- Add your JavaScript and other body elements here -->
+
+                <!-- Add the separator after each persona -->
+                <div class="row featurette mt-2">
+                    <div class="col-md-7 mt-0">
+                        <h2 class="featurette-heading">
+                            Dr. Olivia Taylor -
+                            <span class="text-muted">
+                                "Decoding the language of our planet through
+                                climate science" 
+                            </span>
+                        </h2>
+                        <p class="">
+                            Dr. Olivia Taylor, a pioneering climate scientist
+                            committed to unraveling the intricacies of climate
+                            change, holds a PhD. in Environmental Science with a
+                            specialization in Climate Change Analysis. As a
+                            prominent figure in the field, she has become a
+                            ing voice, actively contributing to climate
+                            research for a government agency and playing a vital
+                            role in assessing and proposing strategies to
+                            address climate change impacts.
+                        </p>
+                        <p class="">
+                            <strong>Attribute</strong>
+                            <ul>
+                                <li>Age: 38</li>
+                                <li>Gender: Female</li>
+                                <li>Ethnicity: American</li>
+                            </ul>                       
+                        </p>
+                        <p class="">
+                            <strong>Background</strong>
+                            <br />
+                            Possessing a PhD in Environmental Science with a
+                            specialization in Climate Change Analysis, the
+                            researcher is actively involved in climate analysis
+                            for a government agency. This role involves a
+                            crucial contribution to assessing and proposing
+                            strategies to address the impacts of climate change.
+                        </p>
+                        <p class="">
+                            <strong>Needs</strong>
+                            <ul>
+                                <li>Discern and communicate nuanced trends in oceanic
+                                    and terrestrial temperatures spanning 260 years</li>
+                                <li>Provide policymakers with insightful data to
+                                    facilitate informed decision-making in climate
+                                    policy</li>
+                            </ul>
+                        </p>
+                        <p class="">
+                            <strong>Goals</strong>
+                            <ul>
+                                <li>Systematically analyze long-term temperature
+                                    patterns globally</li>
+                                <li>Contribute valuable insights to climate change research for the benefit of the global community</li>
+                            </ul>
+                        </p>
+                        <p class="">
+                            <b>Skills & Experience Levels</b>   
+                            <ul>
+                                <li><strong>Expertise:</strong> Advanced understanding of climate
+                                    science, statistical analysis, and data
+                                    visualization</li>
+                                <li><strong>Programming Proficiency:</strong> Proficient in utilizing
+                                    programming languages, including Python and R, for
+                                    sophisticated data analysis</li>
+                                <li><strong>Spatial Analysis:</strong> Familiarity with GIS tools,
+                                    enhancing the ability to conduct spatial analysis of
+                                    complex climate data</li>
+                                <li><strong>Publication Record:</strong> Several years of hands-on
+                                    experience in climate research and analysis, with
+                                    published works in reputable journals</li>
+                                <li><strong>Governmental Insight:</strong> Experience as a climate
+                                    researcher within a government agency, providing a
+                                    nuanced understanding of policy contexts</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img
+                            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            width="500"
+                            height="500"
+                            role="img"
+                            aria-label="Placeholder: 500x500"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false"
+                            src="/olivia_taylor.jpg" />
+                    </div>
+                </div>
+
+                <hr class="featurette-divider" />
+
+                <div class="row featurette">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading">
+                            Alex Mitchell -
+                            <span class="text-muted">
+                                "Bridging the Gap: Making Climate Science
+                                Accessible to All"
+                            </span>
+                        </h2>
+                        <p class="">
+                            Alex is passionate about communicating climate
+                            change science to the general public and
+                            policymakers. He has experience in translating
+                            complex scientific findings into accessible
+                            information. Alex is a dynamic individual driven by
+                            a passion for communicating climate change science
+                            to diverse audiences, from the general public to
+                            policymakers. With a knack for translating complex
+                            scientific findings into accessible information, he
+                            serves as a vital link in bridging the gap between
+                            climate science and the broader community.
+                        </p>
+                        <p class="">
+                            <strong>Attribute</strong>
+                            <ul>
+                                <li><strong>Age: </strong>20</li>
+                                <li><strong>Gender:</strong>Male</li>
+                                <li><strong>Ethnicity:</strong>Australian</li>
+                            </ul>
+                        </p>
+                        <p class="">
+                            <strong>Background</strong>
+                            <br />
+                            A 20-year-old journalist recently graduated with a
+                            passion for storytelling and a focus on engaging
+                            younger audiences. Growing up in a small town, he
+                            developed a curiosity about the world and pursued a
+                            journalism degree to make a difference. Known for
+                            his fresh writing style and multimedia skills, Alex
+                            is determined to amplify the voices of his
+                            generation. He currently works at a digital media
+                            startup, using social media and innovative
+                            storytelling tools to address issues like social
+                            justice and environmental sustainability. Beyond
+                            journalism, Alex is actively involved in community
+                            initiatives, promoting social responsibility and
+                            civic engagement.
+                        </p>
+                        <p class="">
+                            <strong>Needs</strong>
+                            <ul>
+                                <li>Continuously seeks innovative ways to communicate
+                                    climate science effectively</li>
+                                <li>A desire to engage with diverse audiences,
+                                    including the general public and policymakers, to
+                                    raise awareness about climate change</li>
+                            </ul>
+                        </p>
+                        <p class="">
+                            <strong>Goals</strong>
+                            <ul>
+                                <li>Develop and implement strategies for making
+                                    climate science accessible to a broader audience</li>
+                                <li>Contribute to global climate action by fostering
+                                    understanding and support through effective
+                                    communication</li>
+                            </ul>
+                        </p>
+                        <p class="">
+                            <strong>Skills & Experience Levels</strong>
+                            <ul>
+                                <li>Worked on various climate communication projects,
+                                    demonstrating a keen ability to transform complex
+                                    data into interactive reports and presentations</li>
+                                <li>Proficient in using standard data analysis tools,
+                                    with a preference for user-friendly interfaces</li>
+                                <li>Familiarity with different climate analysis tools
+                                    and applications, showcasing adaptability in
+                                    approaching climate research</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <img
+                            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            width="500"
+                            height="500"
+                            role="img"
+                            aria-label="Placeholder: 500x500"
+                            preserveAspectRatio="xMidYMid slice"
+                            focusable="false"
+                            src="/Alex_Mitchell.jpg" />
+                    </div>
+                </div>
+
+                <hr class="featurette-divider" />
+
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading">
+                            Mr. William Anderson -
+                            <span class="text-muted">
+                                "Fostering Sustainable Solutions Through
+                                Informed Governances"
+                            </span>
+                        </h2>
+                        <p class="">
+                            Mr. William Anderson, a 45-year-old Hispanic
+                            professional, is a stalwart in the United States
+                            Government's environmental conservation sector. His
+                            journey is defined by a passion for sustainable
+                            development and a commitment to navigating complex
+                            environmental challenges through well-informed
+                            governance decisions.
+                        </p>
+                        <p class="">
+                            <strong>Attribute</strong>
+                            <ul>
+                                <li><strong>Age: </strong>45</li>
+                                <li><strong>Gender:</strong>Male</li>
+                                <li><strong>Ethnicity:</strong>American</li>
+                            </ul>
+                        </p>
+                        <p class="">
+                            <strong>Background</strong>
+                            <br />
+                            With a strong foundation in environmental science
+                            and conservation, Mr. Anderson holds a pivotal
+                            middle-management position in the U.S. Government's
+                            environmental conservation sector. His role involves
+                            steering sustainable development policies and
+                            strategies to address the pressing challenges of our
+                            time.
+                        </p>
+                        <p class="">
+                            <strong>Needs</strong>
+                            <ul>
+                                <li>A streamlined process for synthesizing and
+                                    presenting complex climate data relevant to U.S.
+                                    environmental policies</li>
+                            </ul>
+                            
+                        </p>
+                        <p class="">
+                            <strong>Goals</strong>
+                            <ul>
+                                <li>As part of his role in the U.S. Government's
+                                    environmental conservation sector, William needs to
+                                    stay informed about long-term climate trends to
+                                    contribute to sustainable development policies and
+                                    strategies at the national level</li>
+                            </ul>
+                        </p>
+                        <p class="">
+                            <strong>Skills & Experience Levels</strong>
+                            <ul>
+                                <li><strong>Environmental Science and Conservation:</strong><ul>
+                                    <li>Strong foundation in environmental science concepts</li>
+                                    <li>Familiarity with climate change and its implications
+                                        for conservation efforts</li>
+                                </ul></li>
+                                <li><strong>Project Management:</strong> Proficiency in managing
+                                    environmental initiatives at the government level</li>
+                                    <li><strong>Communication:</strong><ul>
+                                        <li>Effective communication skills for conveying
+                                            environmental information to diverse audiences,
+                                            including policymakers</li>
+                                        <li>Experience collaborating with governmental bodies
+                                            and NGOs on national-level environmental projects</li>
+                                    </ul></li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img
+                            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            src="William_Anderson.jpg"
+                            alt="William Anderson Image" />
+                    </div>
+                </div>
+
+                <hr class="featurette-divider" />
                 <!-- Code not go further than this line-->
             </div>
-            <div></div>
         </main>
 
         <footer>
             <!-- TODO: MAke our todo task her -->
         </footer>
+        <script
+            src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
         <script src="index.js"></script>
     </body>
 </html>

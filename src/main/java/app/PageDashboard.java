@@ -91,6 +91,7 @@ public class PageDashboard implements Handler  {
                 
                 model.put("globalYears", years);
                 model.put("globalPopulations", populations);
+
             } else if(selectedCountryOrGlobal.equals("Global") && selectedTemperatureOrPopulation.equals("Temperature")){
                 ArrayList<GlobalTemp> globalTemp = jdbc.getGlobalTemp(intStartYear, intEndYear);
                 model.put("GlobalTemps", globalTemp);
@@ -130,6 +131,8 @@ public class PageDashboard implements Handler  {
                 List<Double> countryAverageTemp = countryTemperatures.stream().map(Temperature::getAverageTemp).collect(Collectors.toList());
                 List<Double> countryMinTemp = countryTemperatures.stream().map(Temperature::getMinTemp).collect(Collectors.toList());
                 List<Double> countryMaxTemp = countryTemperatures.stream().map(Temperature::getMaxTemp).collect(Collectors.toList());
+
+                System.out.println(countryTemperatures);
 
                 model.put("CountryTemperatureYear", countryTemperatureYear);
                 model.put("countryAverageTemp", countryAverageTemp);

@@ -19,8 +19,8 @@ public class PageAboutUs implements Handler  {
         model.put("members", members);
       
         // TODO: Your work for Thymeleaf and JDBC
-        
-
+        ArrayList<Persona> personas = jdbc.getPersona();
+        model.put("Personas", personas);
 
         // No code below this
         context.render(TEMPLATE, model);

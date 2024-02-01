@@ -14,83 +14,102 @@
             rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css" />
+        <script
+            type="text/javascript"
+            charset="utf8"
+            src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar"></nav>
         <div class="container-fluid">
             <div class="row">
                 <div
-                    class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary vh-100">
-                    <div class="flex-shrink-0 p-3" style="width: 280px">
-                        <ul class="list-unstyled ps-0">
-                            <li class="mb-1">
-                                <button
-                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#home-collapse"
-                                    aria-expanded="true">
-                                    Shallow-Glance Data
-                                </button>
-                                <div class="collapse show" id="home-collapse">
-                                    <ul
-                                        class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li>
-                                            <a
-                                                href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Temperature and Population
-                                                changed by Country/Global
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Temperature changed by
-                                                City/State
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="mb-1">
-                                <button
-                                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#dashboard-collapse"
-                                    aria-expanded="false">
-                                    Deep-dive Data
-                                </button>
-                                <div class="collapse" id="dashboard-collapse">
-                                    <ul
-                                        class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li>
-                                            <a
-                                                href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Temperature Change over Extended
-                                                Periods
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Finding Time Periods with
-                                                Similar Temperature and/or
-                                                Population
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                    class="sidebar border border-right col-md-3 col-lg-2 p-0 vh-100"
+                    id="dashboardSidebar"></div>
                 <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <h1 class="pt-3 pb-2 mb-3 border-bottom">
-                        Shallow Glance of the data
+                        Temperature Change over Extended Periods
                     </h1>
+                    <div
+                        class="d-flex justify-content-around flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                        <h5>Add new region period</h5>
+
+                        <div
+                            class="d-flex justify-content-center flex-wrap align-items-center">
+                            <form
+                                class="btn-toolbar mb-2 mb-md-0"
+                                action="/dashboard_s3a"
+                                method="post">
+                                <p class="my-auto me-2">View</p>
+                                <input
+                                    name="StartYear"
+                                    style="width: 85px"
+                                    type="number"
+                                    class="form-control d-flex align-items-center gap-1 me-2" />
+                                <p class="my-auto me-2">Year Range</p>
+                                <input
+                                    name="YearRange"
+                                    style="width: 100px"
+                                    type="number"
+                                    class="form-control d-flex align-items-center gap-1 me-2" />
+                                <p class="my-auto me-2">View by Region</p>
+                                <select
+                                    style="width: 110px"
+                                    class="form-select btn-sm dropdown-toggle d-flex align-items-center gap-1 me-2"
+                                    name="Region">
+                                    <option
+                                        th:each="region : ${regions}"
+                                        th:selected="${region == selectedRegion}"
+                                        th:text="${region}"></option>
+                                </select>
+                                <button class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="table-responsive small">
+                        <table
+                            class="table table-striped table-sm"
+                            id="myTable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" scope="col">
+                                        Region
+                                    </th>
+                                    <th class="text-center" scope="col">
+                                        Starting Year
+                                    </th>
+                                    <th class="text-center" scope="col">
+                                        Year Range
+                                    </th>
+                                    <th class="text-center" scope="col">
+                                        Average Temp
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    th:each="averageTemp : ${AverageTempByRegion}">
+                                    <td
+                                        class="text-center"
+                                        th:text="${averageTemp.getRegion()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${averageTemp.getYear()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${averageTemp.getYearRange()}"></td>
+                                    <td
+                                        class="text-center"
+                                        th:text="${averageTemp.getAverageTemp()}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,6 +120,12 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+        </script>
 
         <script src="index.js"></script>
     </body>

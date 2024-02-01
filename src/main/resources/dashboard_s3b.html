@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Climate Change Awareness</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar"></nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div
+                    class="sidebar border border-right col-md-3 col-lg-2 p-0 vh-100"
+                    id="dashboardSidebar"></div>
+                <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <h1 class="pt-3 pb-2 mb-3 border-bottom">
+                        Finding Time Periods with Similar Temperature and/or
+                        Population
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Work above this code -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+        <script>
+            let submitForm = () => {
+                document.getElementById('myForm').submit();
+            };
+        </script>
+        <script src="index.js"></script>
+    </body>
+</html>
